@@ -7,8 +7,7 @@
     <title><?= WEBSITE_NAME ?> - <?= @$data[0]['PageName'] ?></title>
     <link rel="icon" type="image/png" sizes="32x32" href="<?= ASSETS_DIR ?>favicon.png">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=GTAG_COD"></script>
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GTAG_COD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
@@ -19,7 +18,7 @@
             'ad_storage': 'denied',
             'analytics_storage': 'denied'
         });
-        gtag('js', new Date());
+        gtag('js', new Date()); 
         gtag('config', 'GTAG_CODE');
         gtag("send", "pageview");
     </script>
