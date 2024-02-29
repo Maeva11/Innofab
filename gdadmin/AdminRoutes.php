@@ -14,12 +14,15 @@ $app->get('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response
     if(!isset($args['action'])){
         $args = ['block' => [$CRUD], 'datas' => (new $CRUD())->getAll()];
     }
-    if ($args['action'] == "delete") {
-        (new $CRUD())->remove(@$args['id']);
-        Tools::redirect(ADMIN_URL . 'crud/' . $CRUD);
-    }
-    if($args['action'] == "set"){
-        $args = ['block' => ["set/" . $CRUD], 'datas' => @(new $CRUD())->get(@$args['id'])];
+    else
+    {
+        if ($args['action'] == "delete") {
+            (new $CRUD())->remove(@$args['id']);
+            Tools::redirect(ADMIN_URL . 'crud/' . $CRUD);
+        }
+        if($args['action'] == "set"){
+            $args = ['block' => ["set/" . $CRUD], 'datas' => @(new $CRUD())->get(@$args['id'])];
+        }
     }
     return $app->tpl->render($response, "page.php", $args);
 });
@@ -38,7 +41,7 @@ $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respons
         $args = [$args, 'block' => ['blockbuilder'], "blocks" => $builder->getAll()];
     }
     
-    if(is_null($args['action'])){
+    if(empty($args['action']) || is_null($args['action'])){
         $Pagebuilder = new Pagebuilder();
         $pages = $Pagebuilder->getAll();
         $used_blocks = [];
@@ -46,8 +49,11 @@ $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respons
             foreach ($page->datas as $block) {
                 $used_blocks[$block->id_block] = $page->id;
             }
-            foreach (json_decode($page->datas_en) as $block) {
-                $used_blocks[$block->id_block] = $page->id;
+            if(isset($page->datas_en))
+            {
+                foreach (json_decode($page->datas_en) as $block) {
+                    $used_blocks[$block->id_block] = $page->id;
+                }
             }
         }
         $args['used_blocks'] = $used_blocks;
