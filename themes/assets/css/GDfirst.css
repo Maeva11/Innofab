@@ -1,0 +1,30 @@
+.consent-cookie{
+    position: fixed;
+    bottom:1em;
+    left:50%;
+    transform: translate(-50%, 200%);
+    background: rgb(247,247,247);
+    z-index: 999;
+    padding:1em 5em;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.18);
+    transition-duration: 800ms;
+    opacity: 0;
+}
+.consent-cookie.active{
+    transform: translateX(-50%);
+    opacity: 1;
+}
+.consent-cookie h2{
+    margin-bottom: 0;
+}
+.consent-cookie button{
+    float: right;
+    margin: 1em;
+    padding: 0.2em 2em;
+    border:0;
+    background:#007bb1;
+    color: #fff;
+}
+.consent-cookie button.refus{
+    background:rgba(0,123,177,0.54);
+}

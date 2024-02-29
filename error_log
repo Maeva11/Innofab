@@ -1,0 +1,156 @@
+[30-Aug-2021 12:13:58 Europe/Paris] Slim Application Error
+Type: PDOException
+Code: 2002
+Message: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/themes/parts/header.php(2): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/themes/page.php(25): include('/home/sc4fxxq04...')
+#6 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(203): include('/home/sc4fxxq04...')
+#7 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(184): Slim\Views\PhpRenderer->protectedIncludeScope('themes/page.php', Array)
+#8 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(153): Slim\Views\PhpRenderer->fetchTemplate('page.php', Array)
+#9 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(54): Slim\Views\PhpRenderer->fetch('page.php', Array, true)
+#10 /home/sc4fxxq0419/public_html/router/Get.php(7): Slim\Views\PhpRenderer->render(Object(GuzzleHttp\Psr7\Response), 'page.php', Array)
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#17 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#18 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#19 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#20 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#21 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#22 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#23 {main}
+Previous Error:
+Type: PDOException
+Code: 0
+Message: PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/themes/parts/header.php(2): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/themes/page.php(25): include('/home/sc4fxxq04...')
+#6 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(203): include('/home/sc4fxxq04...')
+#7 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(184): Slim\Views\PhpRenderer->protectedIncludeScope('themes/page.php', Array)
+#8 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(153): Slim\Views\PhpRenderer->fetchTemplate('page.php', Array)
+#9 /home/sc4fxxq0419/public_html/vendor/slim/php-view/src/PhpRenderer.php(54): Slim\Views\PhpRenderer->fetch('page.php', Array, true)
+#10 /home/sc4fxxq0419/public_html/router/Get.php(7): Slim\Views\PhpRenderer->render(Object(GuzzleHttp\Psr7\Response), 'page.php', Array)
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#17 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#18 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#19 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#20 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#21 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#22 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#23 {main}
+[30-Aug-2021 12:13:59 Europe/Paris] Slim Application Error
+Type: PDOException
+Code: 2002
+Message: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/router/Get.php(30): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#6 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#7 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#8 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#9 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#10 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#17 {main}
+Previous Error:
+Type: PDOException
+Code: 0
+Message: PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/router/Get.php(30): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#6 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#7 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#8 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#9 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#10 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#17 {main}
+[30-Aug-2021 12:17:12 Europe/Paris] Slim Application Error
+Type: PDOException
+Code: 2002
+Message: SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/router/Get.php(30): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#6 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#7 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#8 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#9 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#10 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#17 {main}
+Previous Error:
+Type: PDOException
+Code: 0
+Message: PDO::__construct(): php_network_getaddresses: getaddrinfo failed: Name or service not known
+File: /home/sc4fxxq0419/public_html/classes/GWModel.php
+Line: 13
+Trace: #0 /home/sc4fxxq0419/public_html/classes/GWModel.php(13): PDO->__construct('mysql:host=DB_H...', 'DB_USER', 'DB_PASSWORD', Array)
+#1 /home/sc4fxxq0419/public_html/classes/GWModel.php(9): GWModel->connectDatabase()
+#2 /home/sc4fxxq0419/public_html/classes/Controller.php(11): GWModel->__construct()
+#3 /home/sc4fxxq0419/public_html/classes/Pagebuilder.php(12): Controller->__construct()
+#4 /home/sc4fxxq0419/public_html/router/Get.php(30): Pagebuilder->__construct()
+#5 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php(43): {closure}(Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#6 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(384): Slim\Handlers\Strategies\RequestResponse->__invoke(Object(Closure), Object(GuzzleHttp\Psr7\ServerRequest), Object(GuzzleHttp\Psr7\Response), Array)
+#7 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\Routing\Route->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#8 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#9 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/Route.php(341): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#10 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Routing/RouteRunner.php(84): Slim\Routing\Route->run(Object(GuzzleHttp\Psr7\ServerRequest))
+#11 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/Middleware/ErrorMiddleware.php(107): Slim\Routing\RouteRunner->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#12 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(147): Slim\Middleware\ErrorMiddleware->process(Object(GuzzleHttp\Psr7\ServerRequest), Object(Slim\Routing\RouteRunner))
+#13 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/MiddlewareDispatcher.php(81): class@anonymous->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#14 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(215): Slim\MiddlewareDispatcher->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#15 /home/sc4fxxq0419/public_html/vendor/slim/slim/Slim/App.php(199): Slim\App->handle(Object(GuzzleHttp\Psr7\ServerRequest))
+#16 /home/sc4fxxq0419/public_html/index.php(11): Slim\App->run()
+#17 {main}
