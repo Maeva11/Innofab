@@ -1,7 +1,7 @@
 <?php
-define('SMTP_HOST', 'ssl0.ovh.net');
-define('SMTP_SECURE', 'ssl');//tls
-define('SMTP_PORT', 465);
+define('SMTP_HOST', '');
+define('SMTP_SECURE', '');//tls
+define('SMTP_PORT', 0);
 define('SMTP_USER', '');
 define('SMTP_USER_LABEL', '');
 define('SMTP_PASSWORD', '');

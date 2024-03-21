@@ -11,15 +11,16 @@ $app->get('/', function (Request $request, Response $response, $args) use ($app)
 })->setName('root');
 $app->get('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
     $CRUD = $args['crud'];
-    if(!isset($args['action'])){
+    if (!isset($args['action'])) {
         $args = ['block' => [$CRUD], 'datas' => (new $CRUD())->getAll()];
-    }
-    if ($args['action'] == "delete") {
-        (new $CRUD())->remove(@$args['id']);
-        Tools::redirect(ADMIN_URL . 'crud/' . $CRUD);
-    }
-    if($args['action'] == "set"){
-        $args = ['block' => ["set/" . $CRUD], 'datas' => @(new $CRUD())->get(@$args['id'])];
+    } else {
+        if ($args['action'] == "delete") {
+            (new $CRUD())->remove(@$args['id']);
+            Tools::redirect(ADMIN_URL . 'crud/' . $CRUD);
+        }
+        if ($args['action'] == "set") {
+            $args = ['block' => ["set/" . $CRUD], 'datas' => @(new $CRUD())->get(@$args['id'])];
+        }
     }
     return $app->tpl->render($response, "page.php", $args);
 });
@@ -37,8 +38,8 @@ $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respons
         (@$args['action'] == "delete") ? $builder->remove(@$args['id']) : '';
         $args = [$args, 'block' => ['blockbuilder'], "blocks" => $builder->getAll()];
     }
-    
-    if(is_null($args['action'])){
+
+    if (empty($args['action']) || is_null($args['action'])) {
         $Pagebuilder = new Pagebuilder();
         $pages = $Pagebuilder->getAll();
         $used_blocks = [];
@@ -46,13 +47,15 @@ $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respons
             foreach ($page->datas as $block) {
                 $used_blocks[$block->id_block] = $page->id;
             }
-            foreach (json_decode($page->datas_en) as $block) {
-                $used_blocks[$block->id_block] = $page->id;
+            if (isset($page->datas_en)) {
+                foreach (json_decode($page->datas_en) as $block) {
+                    $used_blocks[$block->id_block] = $page->id;
+                }
             }
         }
         $args['used_blocks'] = $used_blocks;
     }
-    
+
     return $app->tpl->render($response, "page.php", $args);
 });
 $app->post('/blockbuilder', function (Request $request, Response $response, $args) use ($app) {
@@ -66,13 +69,27 @@ $app->get('/pageBuilder[/{action}[/{id}]]', function (Request $request, Response
         $args = [$args, 'block' => ['set/pagebuilder'], 'dataspage' => @$page];
     } else {
         (@$args['action'] == "delete") ? $builder->remove(@$args['id']) : '';
-        (@$args['action'] == "duplicate") ? $builder->duplicatePage($args['id'])  : '';
+        (@$args['action'] == "duplicate") ? $builder->duplicatePage($args['id']) : '';
         $args = [$args, 'block' => ['pagebuilder'], "pages" => $builder->getAll()];
     }
     return $app->tpl->render($response, "page.php", $args);
 });
 $app->post('/pageBuilder[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
-    (new Pagebuilder())->set($_POST, @$_FILES);
+    $PageBuilder = new Pagebuilder();
+    $params = [
+        "nom" => $_POST['nom'],
+        "url" => $_POST['url'],
+        "title" => $_POST['title'],
+        "description" => $_POST['description'],
+        "parent" => intval($_POST['parent']),
+        "id" => $_POST['id'],
+        "datas" => [],
+        "LANG" => "",
+        "footer" => "3",
+        "menu" => "0",
+    ];
+
+    $PageBuilder->set($params, @$_FILES);
     Tools::redirect(ADMIN_URL . 'pageBuilder');
 });
 $app->get('/terms', function (Request $request, Response $response, $args) use ($app) {

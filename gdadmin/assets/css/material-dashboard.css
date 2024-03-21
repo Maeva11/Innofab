@@ -14278,10 +14278,11 @@ h2.title {
   margin-top: -30px !important;
 }
 
-.tab-content .tab-pane .td-actions {
+.tab-content .tab-pane .td-actions { 
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: center;
 }
 
 .card .tab-content .form-check {
@@ -14848,8 +14849,12 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   bottom: 0;
   left: 0;
   z-index: 2;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  border-radius: 0.75rem;
   width: 260px;
-  background: #fff;
+  background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
   box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
@@ -15007,6 +15012,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   display: block;
   height: auto;
   white-space: nowrap;
+  color: white;
 }
 
 .sidebar .nav i {
@@ -15145,8 +15151,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-color="purple"] li.active>a {
-  background-color: #53a83b;
-  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(131, 189, 115, 0.4);
+  background-color: #e6007e;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(230, 0, 126, 0.6);
 }
 
 .sidebar[data-color="azure"] li.active>a {
@@ -17537,7 +17543,7 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 }
 
 .card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
-  border-radius: 3px;
+  border-radius: 0.75rem;
   margin-top: -20px;
   padding: 15px;
 }

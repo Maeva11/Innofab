@@ -65,6 +65,8 @@ $app->post('/editLANG', function (Request $request, Response $response, $args) u
     $_SESSION['lang'] = @$_POST['lang'];
     return $response;
 });
+
+
 $app->post('/contact', function (Request $request, Response $response, $args) use ($app) {
     $Mailer = new Mail();
     $Mailer->setSubject("Demande de contact");
@@ -75,7 +77,6 @@ $app->post('/contact', function (Request $request, Response $response, $args) us
         Tools::setFlash("error", 'Désolé Votre message n\'a pas été envoyée  !');
     }
     Tools::redirect('/contact');
-
 });
 
 /*

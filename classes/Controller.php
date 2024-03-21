@@ -11,10 +11,7 @@ class Controller
         $this->model = new GWModel();
     }
 
-    public function getModel()
-    {
-        return $this->model;
-    }
+    public function getModel(){return $this->model;}
 
     public function i18nfield($field)
     {
@@ -53,7 +50,6 @@ class Controller
 
         return false;
     }
-
     public function getAll($order_by = 'id', $order_sort = 'DESC')
     {
         $datas = $this->getBy([], $order_by, $order_sort);
@@ -63,15 +59,10 @@ class Controller
                     $data->datas = json_decode($data->datas);
         return $datas;
     }
+    public function set($params, $files = []){
+        $hashedPassword = password_hash($params['password'][0], PASSWORD_DEFAULT);
 
-    public function set($params, $files = [])
-    {
-        if (isset($params['password'][0])) {
-            $hashedPassword = password_hash($params['password'][0], PASSWORD_DEFAULT);
-            $params['password'] = $hashedPassword;
-        } else {
-            echo " ";
-        }
+        (isset($params['password'])) ? $params['password'] = $hashedPassword : '';
 
         (isset($params['date'])) ? $params['date'] = implode('-', array_reverse(explode('/', $params['date']))) : '';
         $sSQLChamps = '';
@@ -87,7 +78,7 @@ class Controller
                 foreach ($this->allowFileNames as $fileName) {
                     if (!empty($files[$fileName]['name'])) {
                         $result = (new Upload())->upload_file($files, '../', $fileName);
-                        if ($result !== false) {
+                        if ($result !== false){
                             $aDatas[$fileName] = $result;
                         }
                     }
@@ -95,7 +86,7 @@ class Controller
             }
         }
 
-        (!empty($params['id'])) ? $sql = 'UPDATE ' . $this->model->getTable() . ' SET ' . $sSQLChamps . ' WHERE id=' . $params['id'] : $sql = 'INSERT INTO ' . $this->model->getTable() . ' SET ' . $sSQLChamps;
+        (!empty($params['id'])) ? $sql = 'UPDATE ' . $this->model->getTable() . ' SET ' . $sSQLChamps . ' WHERE id='.$params['id'] : $sql = 'INSERT INTO ' . $this->model->getTable() . ' SET ' . $sSQLChamps;
         $this->model->query($sql, $aDatas);
         return true;
     }

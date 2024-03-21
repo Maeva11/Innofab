@@ -5,6 +5,7 @@ if (!empty($_SESSION["auth"]) || @$_SESSION["auth"] == 'true') {
     header('Location: ' . ADMIN_URL);
     die();
 }
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     (new Admin())->connexion($_POST['identifiant'], $_POST['password']);
 }
