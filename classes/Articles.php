@@ -1,6 +1,5 @@
 <?php
 
-
 class articles extends Controller
 {
     protected $table;

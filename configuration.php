@@ -55,7 +55,11 @@ require __DIR__ . '/classes/Auth.php';
 require __DIR__ . '/classes/GenerateForm.php';
 require __DIR__ . '/classes/Blockbuilder.php';
 require __DIR__ . '/classes/Pagebuilder.php';
-require __DIR__ . '/classes/Articles.php';
-//require __DIR__ . '/classes/Configuration.php';
+//require __DIR__ . '/classes/Articles.php';
+//require __DIR__ . '/classes/Users.php';
+//require __DIR__ . '/classes/Valeur.php';
 
+
+
+//require __DIR__ . '/classes/Configuration.php';
 //require __DIR__ . '/classes/MenuAdmin.php';

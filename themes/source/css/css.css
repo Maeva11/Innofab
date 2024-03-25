@@ -1,0 +1,13 @@
+.unflex {
+    padding: .25rem .75rem;
+    margin: 0;
+    width: 30%;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .badge {
+    color : black;
+  }

@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body"> 
         <div class="tab-content">
             <div class="tab-pane active">
                 <table class="table">

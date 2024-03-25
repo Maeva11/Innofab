@@ -40,8 +40,8 @@ class Tools extends GWModel
 
     public static function trad($word)
     {
-        $Trad = new Trad();
-        return $Trad->translate($word);
+//        $Trad = new Trad();
+//        return $Trad->translate($word);
     }
 
     public static function dateFr($date)
@@ -345,7 +345,7 @@ class Tools extends GWModel
 
     public static function getLangs()
     {
-        return AVAILABLE_LANGS;
+//        return AVAILABLE_LANGS;
     }
 
     public static function getLangId($lang)

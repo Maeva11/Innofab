@@ -346,6 +346,7 @@ function duplicableBlockEl() {
         $(this).off(e);
     });
     initTinymce();
+
     function initTinymce() {
         tinymce.init({
             selector: 'textarea:not(.not-tiny)',
@@ -435,7 +436,9 @@ function cloneTinyMCE(data = "") {
     html = data.removeAttr("aria-hidden");
     return html = data.removeAttr("style");
 }
+
 initIcon();
+
 function initIcon() {
     $('.edit-icon').on('keyup', function () {
         $(this).parent().next().html('<i class="fa fa-2x ' + $(this).val() + '"></i>');
