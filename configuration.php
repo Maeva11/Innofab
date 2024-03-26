@@ -61,6 +61,7 @@ require __DIR__ . '/classes/Pagebuilder.php';
 require __DIR__ . '/classes/Structure.php';
 require __DIR__ . '/classes/Configuration.php';
 require __DIR__ . '/classes/Tarifs.php';
+require __DIR__ . '/classes/Valeurs.php';
 
 //require __DIR__ . '/classes/Articles.php';
 //require __DIR__ . '/classes/Users.php';

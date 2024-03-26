@@ -1,50 +1,83 @@
-<section class="hero-section hero-section-full-height d-flex justify-content-center align-items-center"
-         style="position: relative; z-index: 0; background: none;">
-    <div class="section-overlay"></div>
+<style>
+    /* Styles généraux */
+    .carousel-container {
+        width: 80%;
+        margin: 50px auto;
+        position: relative;
+    }
 
-    <div class="container">
-        <div class="row">
+    .carousel-item {
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.5;
+        transition: opacity 0.5s;
+    }
 
-            <div class="col-lg-7 col-12 text-center mx-auto">
-                <h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-                    <span>InnoFab pour</span>
-                    <span class="cd-words-wrapper" style="width: 217px;">
-                                    <b class="is-hidden">Imaginer</b>
-                                    <b class="is-visible">Créer</b>
-                                </span>
-                </h1>
+    .carousel-item.active {
+        opacity: 1;
+        z-index: 1;
+    }
 
-                <a class="custom-btn btn button button--atlas smoothscroll me-3" href="#intro-section">
-                    <span>Qui sommes-nous ?</span>
+    .carousel-item:nth-child(1) {
+        z-index: 2;
+    }
 
-                    <div class="marquee" aria-hidden="true">
-                        <div class="marquee__inner">
-                            <span>Qui sommes-nous ?</span>
-                            <span>Qui sommes-nous ?</span>
-                            <span>Qui sommes-nous ?</span>
-                            <span>Qui sommes-nous ?</span>
-                        </div>
-                    </div>
-                </a>
+    /* Styles pour les flèches de navigation */
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+    }
 
-                <a class="custom-btn custom-border-btn custom-btn-bg-white btn button button--pan smoothscroll"
-                   href="#services-section">
-                    <span>Formation</span>
-                </a>
-            </div>
+    .prev {
+        left: 10px;
+    }
 
-        </div>
+    .next {
+        right: 10px;
+    }
+</style>
+
+<section class="carousel-container">
+    <div class="carousel-item active">
+        <img src="image1.jpg" alt="Image 1">
+    </div>
+    <div class="carousel-item">
+        <img src="image2.jpg" alt="Image 2">
+    </div>
+    <div class="carousel-item">
+        <img src="image3.jpg" alt="Image 3">
     </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#ffffff" fill-opacity="1"
-              d="M0,224L40,229.3C80,235,160,245,240,250.7C320,256,400,256,480,240C560,224,640,192,720,176C800,160,880,160,960,138.7C1040,117,1120,75,1200,80C1280,85,1360,139,1400,165.3L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
-    </svg>
-    <div class="backstretch"
-         style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 400px; width: 100%; z-index: -999998; position: absolute;">
-        <img src="/themes/assets/images/innofab.jpg"
-             style="position: absolute; display: block; margin: 0px; padding: 0px; border: none; width: auto; height: 400px; max-height: none; max-width: none; z-index: -999999;">
-    </div>
+    <!-- Flèches de navigation -->
+    <div class="prev" onclick="changeSlide(-1)">❮</div>
+    <div class="next" onclick="changeSlide(1)">❯</div>
 </section>
 
+<script>
+    let currentIndex = 0;
+    const items = document.querySelectorAll('.carousel-item');
 
+    function changeSlide(n) {
+        items[currentIndex].classList.remove('active');
+        currentIndex += n;
+
+        if (currentIndex >= items.length) {
+            currentIndex = 0;
+        } else if (currentIndex < 0) {
+            currentIndex = items.length - 1;
+        }
+
+        items[currentIndex].classList.add('active');
+    }
+</script>

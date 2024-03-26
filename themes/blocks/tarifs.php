@@ -11,4 +11,3 @@ $tarifs = $Tarifs->getBy(['active' => 1]);
         <?php
     }
     ?>
- 

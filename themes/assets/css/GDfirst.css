@@ -113,3 +113,17 @@ span.deleteBlock {
     justify-content: center; /* Centre le contenu horizontalement */
     align-items: center; /* Centre le contenu verticalement */
 }
+
+.image-intro {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    width: 1481px;
+    height: 988.321px;
+    max-height: none;
+    max-width: none;
+    z-index: -999999;
+    left: 0px;
+    top: -154.16px;
+}

@@ -87,6 +87,7 @@ if (!empty($_SESSION["auth"]) && $_SESSION["auth"] == 'true' && $_SESSION["role"
 <script src="/themes/source/js/modernizr.js"></script>
 <script src="/themes/source/js/animated-headline.js"></script>
 <script src="/themes/source/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
 
 <script>
     // Chargement de l'API YouTube Player
