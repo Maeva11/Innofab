@@ -45,13 +45,41 @@ $app->get('/unoptimize[/{dir}/{file}]', function (Request $request, Response $re
 $app->get('/resetPassword/{key}', function (Request $request, Response $response, $args) use ($app) {
     return $app->tpl->render($response, "resetPassword.php", $args = ["key" => $args['key']]);
 });
+
 $app->get('/[{url}[/{id}[/{titre}]]]', function (Request $request, Response $response, $args) use ($app) {
-    if ($args['url'] == "articles" && (int)@$args['id'] > 0) {
-        $app->article = (new Articles())->getBy(['active' => 1, 'id' => @$args['id']])[0];
-        $args['url'] = "details-actualites";
+    $id = $args['id'] ?? null;
+    $blockbuilder = new Blockbuilder();
+    $blocks = $blockbuilder->getAll();
+    Tools::addAvis();
+    $Structure = new Structure();
+
+    $url = $args['url'] ?? "";
+    $Pagebuilder = new Pagebuilder();
+    $page = $Pagebuilder->getPageByURL(@$args['url']);
+    $app->breadcrumb = $Pagebuilder->getBreadcrumb($page, $id);
+
+    // faire passer des variables aux pages internes
+    $params = [
+        'id' => $id,
+    ];
+    $structure = $Structure->generateHtml($url, $app, $params);
+
+    $datas = [
+        "page" => (new Pagebuilder())->getPageByURL($url),
+        "app" => $app,
+        "id" => $id,
+        "structure" => $structure,
+        "blocks" => $blocks
+    ];
+
+    if ((!empty($args['url']) && $args['url'] == "article") && (!empty($args['id']) && $args['id'] > 0)) {
+        $datas["breadcrumb"] = (new articles())->get($args['id'])->title ?? "";
     }
-    return $app->tpl->render($response, "page.php", [(new Pagebuilder())->getPageByURL($args['url']), $app]);
+
+    $render = new Slim\Views\PhpRenderer('themes/');
+    return $render->render($response, "page.php", $datas);
 });
+
 $app->post('/resetPassword[/{key}]', function (Request $request, Response $response, $args) use ($app) {
     if (!empty($args['key'])) {
         (new Auth())->resetPassword($args['key'], $_POST);

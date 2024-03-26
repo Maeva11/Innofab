@@ -343,22 +343,4 @@ class Tools extends GWModel
 
     }
 
-    public static function getLangs()
-    {
-//        return AVAILABLE_LANGS;
-    }
-
-    public static function getLangId($lang)
-    {
-        $langs = self::getLangs();
-        if ($id = array_search($lang, $langs)) {
-            return $id;
-        }
-        return 1;
-    }
-}
-
-function __($text)
-{
-    return Tools::trad($text);
 }

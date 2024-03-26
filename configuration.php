@@ -31,6 +31,8 @@ define('TOKEN_TMA', "");//TOKEN API TINYPNG
 /***DEBUG TINYPNG***/
 define('API_TPNG', "DMlCyCfl0v6cPThk9M1b9fRTyL275qnZ");//TOKEN API TINYPNG
 define('DEBUG_TPNG', TRUE);
+define('ROOT', isset($_SESSION['auth']) && $_SESSION['auth'] == 'true' && $_SESSION['role'] == 'root');
+define("ADMIN", isset($_SESSION['auth']) && $_SESSION['auth'] == 'true' && ($_SESSION['role'] == 'admin' || $_SESSION['role'] == 'root'));
 /*********USER*********/
 define('USER_FILE', "/");//Redirection user après connexion & inscription
 require 'acces.php';
@@ -52,14 +54,17 @@ require __DIR__ . '/classes/Admin.php';
 require __DIR__ . '/classes/Upload.php';
 require __DIR__ . '/classes/Mail.php';
 require __DIR__ . '/classes/Auth.php';
+require __DIR__ . '/classes/Machines.php';
 require __DIR__ . '/classes/GenerateForm.php';
 require __DIR__ . '/classes/Blockbuilder.php';
 require __DIR__ . '/classes/Pagebuilder.php';
+require __DIR__ . '/classes/Structure.php';
+require __DIR__ . '/classes/Configuration.php';
+
 //require __DIR__ . '/classes/Articles.php';
 //require __DIR__ . '/classes/Users.php';
 //require __DIR__ . '/classes/Valeur.php';
 
 
 
-//require __DIR__ . '/classes/Configuration.php';
 //require __DIR__ . '/classes/MenuAdmin.php';

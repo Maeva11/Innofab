@@ -49,7 +49,7 @@
 <?= $data["structure"];
 if (!empty($_SESSION["auth"]) && $_SESSION["auth"] == 'true' && $_SESSION["role"] == 'root') {
     echo '<section data-add="add" id="add"> <span class="addblock"> + </span></section>';
-    echo '<div class="display-popup"><div class="listing-block" id="listing-block">coucou</div></div>';
+    echo '<div class="display-popup"><div class="listing-block" id="listing-block"></div></div>';
 
     $html = '<div class="display-popup">
             <div class="listing-block" id="listing-block">';
