@@ -9,6 +9,7 @@ $app->get('/', function (Request $request, Response $response, $args) use ($app)
     $args = ['block' => ['console']];
     return $app->tpl->render($response, "page.php", $args);
 })->setName('root');
+
 $app->get('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
     $CRUD = $args['crud'];
     if (!isset($args['action'])) {
@@ -58,6 +59,12 @@ $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respons
 
     return $app->tpl->render($response, "page.php", $args);
 });
+
+$app->post('/blockBuilder[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
+    (new Blockbuilder())->set($_POST);
+    Tools::redirect(ADMIN_URL . 'blockBuilder');
+});
+
 $app->post('/blockbuilder', function (Request $request, Response $response, $args) use ($app) {
     (new Blockbuilder())->set($_POST);
     return $response;
