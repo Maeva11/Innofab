@@ -48,7 +48,7 @@
                                     class="fas fa-cubes"></i>
                             <p>BlockBuilder</p></a></li>
                     <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>pageBuilder"><i
-                                    class="fas fa-puzzle-piece"></i>
+                                    class="fas fa-pager"></i>
                             <p>Mes pages</p></a></li>
                 <?php } else { ?>
                     <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>console/configuration"><i

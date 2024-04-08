@@ -19,10 +19,10 @@
         <div class="tab-content">
             <div class="tab-pane active">
                 <form class="row" method="post" enctype="multipart/form-data">
-                <?= Tools::generateInput("text", "Titre", "titre", @$el->{"titre"._PREFIX_LANG_}, "col-6"); ?>
-                <?= Tools::generateInput("text", "Description", "description", @$el->{"description"._PREFIX_LANG_}, "col-6"); ?>
-				<?= Tools::generateInput("file", "Image", "image", @$el->image, 'col-12'); ?>
-                <?= Tools::generateInput("radio", "Publi�", "active", @$el->active, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
+                <?= Tools::generateInput("text", "Titre", "titre", @$el->{"titre"._PREFIX_LANG_}, "col-12"); ?>
+                <?= Tools::generateInput("textarea", "Description", "description", @$el->{"description"._PREFIX_LANG_}, "col-6"); ?>
+				<?= Tools::generateInput("file", "Image", "image", @$el->image, 'col-6'); ?>
+                <?= Tools::generateInput("radio", "Publié", "active", @$el->active, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
                 <?= Tools::generateInput("hidden", "", "id", @$el->id); ?>
                 <?= Tools::generateInput("submit", "", "", "Valider", "btn-style2 float-right"); ?>
                 </form>

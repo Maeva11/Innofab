@@ -6,7 +6,7 @@
                 <span class="nav-tabs-title">Machine</span>
                 <ul class="nav nav-tabs float-right">
                     <?php if(@$_GET['trad'] == "en") { ?>
-                        <li class="nav-item mr-3"><a class="nav-link active" href="?trad=fr" ><i class="fas fa-globe"></i> Français</a></li>
+                        <li class="nav-item mr-3"><a class="nav-link active" href="?trad=fr" ><i class="fas fa-globe"></i> Franï¿½ais</a></li>
                     <?php }else{?>
                         <li class="nav-item mr-3"><a class="nav-link active" href="?trad=en" ><i class="fas fa-globe"></i> Anglais</a></li>
                     <?php } ?>
@@ -19,11 +19,11 @@
         <div class="tab-content">
             <div class="tab-pane active">
                 <form class="row" method="post" enctype="multipart/form-data">
-                <?= Tools::generateInput("text", "Titre", "titre", @$el->{"titre"._PREFIX_LANG_}, "col-6"); ?>
-                <?= Tools::generateInput("date", "Date", "date", @$el->date, "col-6"); ?>
-                <?= Tools::generateInput("file", "Illustration", "illustration", @$el->illustration, 'col-12'); ?>
-                <?= Tools::generateInput("textarea", "Contenu", "content", @$el->{"text_1"._PREFIX_LANG_}, 'col-12'); ?>
-                <?= Tools::generateInput("radio", "Publié", "active", @$el->active, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
+                <?= Tools::generateInput("text", "Nom", "nom", @$el->{"nom"._PREFIX_LANG_}, "col-6"); ?>
+                <?= Tools::generateInput("file", "Image", "image", @$el->image, 'col-12'); ?>
+                <?= Tools::generateInput("text", "Description", "description ", @$el->{"description"._PREFIX_LANG_}, 'col-12'); ?>
+                <?= Tools::generateInput("text", "Tag", "tag", @$el->tag, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
+                <?= Tools::generateInput("radio", "PubliÃ©", "actif", @$el->actif, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
                 <?= Tools::generateInput("hidden", "", "id", @$el->id); ?>
                 <?= Tools::generateInput("submit", "", "", "Valider", "btn-style2 float-right"); ?>
                 </form>

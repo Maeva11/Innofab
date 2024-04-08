@@ -27,6 +27,12 @@
     <link href="/themes/source/css/bootstrap-icons.css" rel="stylesheet">
     <link href="/themes/source/css/tooplate-clean-work.css" rel="stylesheet">
     <link href="/themes/assets/css/GDfirst.css" rel="stylesheet">
+    <link href="/themes/assets/css/tarif.css" rel="stylesheet">
+    <link href="/themes/assets/css/actualites.css" rel="stylesheet">
+    <link href="/themes/assets/css/machines.css" rel="stylesheet">
+    <link href="/themes/assets/css/connexion.css" rel="stylesheet">
+    <link href="/themes/assets/css/footer.css" rel="stylesheet">
+    <link href="/themes/assets/css/header.css" rel="stylesheet">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=CODE-GTAG"></script>
     <script>
