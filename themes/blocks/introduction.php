@@ -1,204 +1,151 @@
 <style>
 
-    .carousel-value #carousel {
-        background-color: #1F2243;
-        margin-top: 50px;
+    .valeur {
+        overflow-x: hidden;
+        background: #1F2243;
+        position: relative;
+        height: 450px;
     }
 
-    #carousel {
-        height: 500px;
-        overflow: hidden;
-        padding-top: 50px;
-        padding-bottom: 20px
-    }
-
-    #carousel > div {
+    .list {
+        height: 200px;
         position: absolute;
-        transition: transform 0.8s, left 1s, opacity 1s, z-index 0s;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%)
+    }
+
+    .list li {
+        list-style-type: none;
+        width: 300px;
+        height: auto;
+        opacity: .25;
+        position: absolute;
+        left: 50%;
+        margin-left: -100px;
+        border-radius: 2px;
+        background: #9C89B8;
+        transition: transform 1s, opacity 1s;
+    }
+
+    .list .act {
         opacity: 1;
     }
 
-    #carousel > div .card-carousel {
-        width: 400px;
-        height: 400px;
-        border-radius: 20px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 15px;
-        align-items: center;
-        transition: width 1s;
+    .list .prev,
+    .list .next {
+        cursor: pointer;
     }
 
-    #carousel div.prev {
-        z-index: 5;
-        left: 30%;
-        transform: translateY(50px) translateX(-50%);
+    .list .prev {
+        transform: translateX(-350px) scale(.85);
     }
 
-    #carousel div.prev p {
-        font-size: 10px;
+    .list .next {
+        transform: translateX(350px) scale(.85);
     }
 
-    #carousel div.prev .card-carousel {
-        width: 300px;
-        height: 300px;
+    .list .hide {
+        transform: translateX(-420px) scale(.85);
     }
 
-    #carousel div.prev .user-pic {
-        width: 80px;
-        height: 80px;
+    .list .new-next {
+        transform: translateX(420px) scale(.85);
     }
 
-    #carousel div.prev .user-pic img {
-        width: 80px;
-        height: 80px;
+    .list .hide,
+    .list .new-next {
+        opacity: 0;
+        transition: opacity .5s, transform .5s;
     }
 
-    #carousel div.selected {
-        z-index: 10;
+    .swipe {
+        width: 270px;
+        height: 200px;
+        position: absolute;
+        background-color: green;
+        border-radius: 2px;
+        top: 50%;
         left: 50%;
-        transform: translateY(0px) translateX(-50%);
+        transform: translate(-50%,-50%);
+        opacity: 0;
     }
-
-    #carousel div.next {
-        z-index: 5;
-        left: 70%;
-        transform: translateY(50px) translateX(-50%);
-    }
-
-    #carousel div.next p {
-        font-size: 10px;
-    }
-
-    #carousel div.next .card-carousel {
-        width: 300px;
-        height: 300px;
-    }
-
-    #carousel div.next .user-pic {
-        width: 80px;
-        height: 80px;
-    }
-
-    #carousel div.next  .user-pic img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .user-pic {
-        width: 150px;
-        height: 150px;
-        overflow: hidden;
-        border-radius: 100%;
-        margin: 20px auto 20px;
-        border-left: 3px solid #ddd;
-        border-right: 3px solid #ddd;
-        border-top: 3px solid #007bff;
-        border-bottom: 3px solid #007bff;
-        transform: rotate(-30deg);
-        transition: 0.5s;
-    }
-
-    .user-pic img {
-        width: 145px;
-        height: 145px;
-    }
-
-    .card-carousel:hover .user-pic {
-        transform: rotate(0deg);
-        transform: scale(1.1);
-    }
-
-    .card-carousel h4 {
-        font-size: 1.5rem;
-    }
-
-    .card-carousel p {
-        color: #808080;
-        font-size: 15px;
-    }
-
 </style>
 
-<section class="carousel-value">
+<section class="valeur">
+    <ul class="list">
+        <li class="col text-center shadow-lg rounded bg-white prev">
+            <i class="fas fa-wrench fa-3x rounded-circle mb-2 p-4 pb-0" style="color:#EA581D"></i>
+            <div class="card border-0 bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Créer</h5>
+                    <p class="card-text border-3">Les machines du fablab sont accessibles aux adhérents<br><br>
 
-    <div id="carousel">
-        <?php
-        $Valeurs = new Valeur();
-        $valeurs = $Valeurs->getBy(['active' => 1]);
-
-        foreach ($valeurs as $valeur) {
-            ?>
-            <div>
-                <div class="card-carousel">
-                    <div class="user-pic">
-                        <img src="<?= $valeur->image ?>"
-                             class="img-fluid" alt="User Pic">
-                    </div>
-                    <h4><?= $valeur->titre ?></h4>
-                    <hr>
-                    <p><?= $valeur->description ?></p>
-                    <hr>
+                        Pensez à réserver votre créneau !</p>
+                    <hr class="p-1" style="background-color:#EA581D">
                 </div>
             </div>
-            <?php
-        }
-        ?>
-    </div>
+        </li>
+        <li class="col text-center shadow-lg rounded bg-white act">
+            <i class="fas fa-clover fa-3x rounded-circle mb-2 p-4 pb-0" style="color:#EA581D"></i>
+            <div class="card border-0 bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Partager</h5>
+                    <p class="card-text border-3">Venez partager vos connaissances et compétences <br><br>
+                        Les apéros projets c’est tous les derniers vendredis du mois !</p>
+                    <hr class="p-1" style="background-color: #EA581D">
+                </div>
+            </div>
+        </li>
+        <li class="col text-center shadow-lg rounded bg-white next">
+            <i class="fas fa-brain fa-3x rounded-circle mb-2 p-4 pb-0" style="color:#EA581D"></i>
+            <div class="card border-0 bg-transparent">
+                <div class="card-body">
+                    <h5 class="card-title">Coopérer</h5>
+                    <p class="card-text border-3">Venez participer à nos projets collaboratifs et à la vie de l’association
+<br><br>
+                        Contactez nous !</p>
+                    <hr class="p-1" style="background-color: #EA581D">
+                </div>
+            </div>
+        </li>
+    </ul>
 
+    <div class="swipe"></div>
 </section>
 
 <script>
-    let currentIndex = 0; // Index de l'élément sélectionné au début
+    $(document).ready(function(){
+        // Fonction pour déplacer le carousel vers la gauche
+        function moveCarouselLeft() {
+            var $currentAct = $(".list .act");
+            var $nextAct = $currentAct.next().length ? $currentAct.next() : $(".list li").first();
+            var $prevAct = $currentAct.prev().length ? $currentAct.prev() : $(".list li").last();
 
-    function moveToSelected(elementIndex) {
-        const elements = $("#carousel > div");
+            $(".list li").removeClass("act prev next");
 
-        // Assurez-vous que l'index est dans les limites
-        currentIndex = (elementIndex + elements.length) % elements.length;
+            $currentAct.removeClass("act").addClass("prev");
+            $nextAct.removeClass("prev next").addClass("act");
+            $prevAct.removeClass("prev next").addClass("next");
 
-        elements.each(function (index, element) {
-            const $element = $(element);
-            $element.removeClass();
+            $(".list li").not(".act").css("opacity", "0.25");
+            $(".list .act").css("opacity", "1");
 
-            if (index === currentIndex) {
-                $element.addClass("selected");
-            } else if (index === (currentIndex + 1) % elements.length) {
-                $element.addClass("next");
-            } else if (index === (currentIndex - 1 + elements.length) % elements.length) {
-                $element.addClass("prev");
-            }
+            $(".swipe").animate({left: '-=220px'}, 500, function(){
+                $(".swipe").css("left", "-=220px");
+            });
+        }
+
+        // Déplacement automatique du carrousel toutes les 15 secondes
+        var interval = setInterval(function() {
+            moveCarouselLeft();
+        }, 5000);
+
+        // Clic sur une carte du carrousel (désactivé)
+        $(".list li").click(function(){
+            // Désactiver les clics pendant le déplacement automatique
+            return false;
         });
-    }
+    });
 
-    function startCarousel() {
-        moveToSelected(currentIndex);
-
-        setTimeout(function () {
-            currentIndex = (currentIndex + 1) % $("#carousel > div").length;
-            moveToSelected(currentIndex);
-            startCarousel();
-        }, 3000); // Change every 3 seconds
-    }
-
-    function handleCarouselClick() {
-        stopCarousel();
-        const clickedIndex = $(this).index();
-        currentIndex = clickedIndex;
-        moveToSelected(currentIndex);
-        setTimeout(startCarousel, 2000); // Wait for 2 seconds after manual click to start auto scroll again
-    }
-
-    function stopCarousel() {
-        clearTimeout();
-    }
-
-    startCarousel();
-
-    $('#carousel > div').click(handleCarouselClick);
-</script> 
+</script>

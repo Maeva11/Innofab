@@ -1,0 +1,133 @@
+#page-18 {
+
+    background-color: #f7f7f7;
+
+    .actualite-title {
+        padding-top: 5%;
+        padding-bottom: 3%;
+    }
+
+    .actualite-title {
+        font-size: 32px;
+        font-weight: 700;
+        font-family: 'poppins';
+    }
+
+    .last-actu-image-div {
+
+    }
+
+    .last-actu-image {
+        width: 75%;
+        height: 50%;
+    }
+
+    .last-actu-content {
+
+    }
+
+    .last-actu-title {
+        font-size: 32px;
+        font-weight: 700;
+        font-family: 'poppins';
+    }
+
+    .last-actu-desc {
+        font-size: 24px;
+        font-weight: 400;
+        font-family: 'poppins';
+    }
+    
+    .last-actu-author {
+        font-size: 24px;
+        font-weight: 400;
+        font-style: italic;
+        font-family: 'poppins';
+    }
+
+    .last-article-separation {
+        margin-left: 12.5%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .article-div {
+        padding-right: 5%;
+        padding-left: 5%;
+        padding-top: 1%;
+        padding-bottom: 4%;
+    }
+
+    .article-card {
+        background-color: #1F2243;
+        border-radius: 20px;
+        padding: 15px;
+        width: 40%;
+        max-height: 35em;
+        min-height: 35em;
+    }
+
+    .article-titre {
+        color: white;
+        font-weight: 700;
+        font-size: 24px;
+        height: 25%;
+    }
+
+    .article-div-description {
+        height: 65%;
+    }
+    
+    .article-description {
+        color: white;
+        font-weight: 400;
+        font-size: 16px;
+        font-family: 'poppins';
+    }
+    
+    .article-auteur {
+        color: white;
+        font-weight: 400;
+        font-size: 16px;
+        height: 10%;
+        font-style: italic;
+        font-family: 'poppins';
+    }
+
+    .article-separation {
+        color: white;
+        margin-left: 12.5%;
+    }
+
+    .triangle-left {
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-right: 50px solid #1F2243;
+        border-bottom: 25px solid transparent;
+        margin-top: 60%;
+        margin-left: -24%;
+        position: absolute;
+    }
+
+    .actu-button {
+        background-color: #ff6f00;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        display: block;
+        width: calc(100% - 70px);
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 30px;
+        margin-left: 30px;
+        border-radius: 15px;
+        font-weight: bold;
+    }
+
+    .actu-button:hover {
+        background-color: #ff6f008e;
+    }
+}

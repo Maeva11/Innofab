@@ -34,7 +34,9 @@
 }
 
 #add {
-    width: 90px;
+    width: auto;
+    display:flex;
+    gap:30px;
     text-align: center;
     position: fixed;
     background: #e6007e;
@@ -42,6 +44,18 @@
     z-index: 999;
     bottom: 15px;
     height: 80px;
+}
+
+#position-block {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#position-block i {
+    font-size: 20px;
 }
 
 span.deleteBlock {
@@ -84,12 +98,12 @@ span.deleteBlock {
     top: 50%;
     display: flex;
     justify-content: space-around;
-    left: 50%; /* Centré horizontalement */
-    transform: translate(-50%, -50%); /* Centrage précis */
-    background-color: #ffffff; /* Couleur de fond */
-    border-radius: 8px; /* Coins arrondis */
-    padding: 30px; /* Espacement intérieur */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 9999;
     min-width: 50%;
     min-height: 50%;
@@ -106,6 +120,7 @@ span.deleteBlock {
     text-align: center;
     padding-top: 20px;
     cursor: pointer;
+    margin-left: 15px;
 }
 
 .display-popup.show-popup {
@@ -126,4 +141,91 @@ span.deleteBlock {
     z-index: -999999;
     left: 0px;
     top: -154.16px;
+}
+
+
+.popup-overlay {
+    z-index: 15;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.popup-content {
+    z-index: 15;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.tox .tox-menu {
+    z-index: 16 !important;
+}
+
+.save-button {
+    border: none;
+    display: block;
+    position: relative;
+    padding: 0.7em 2.4em;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 13px;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: royalblue;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.save-button span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid royalblue;
+}
+
+.save-button span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+}
+
+.save-button:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: royalblue;
+}
+
+.save-button:hover {
+    color: white;
+}
+
+.save-button:active span::before {
+    background: #2751cd;
+}
+
+.admin .editable-content {
+    border: 2px dotted green;
+    padding: 10px;
 }

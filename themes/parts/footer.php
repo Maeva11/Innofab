@@ -1,149 +1,59 @@
-<?php //= Tools::getValue("E-mail") ?>
-<?php //foreach ($app->Footer as $el) {
-//    if (!empty($el->footer) && $el->footer != 0) {?>
-<!--        <li><a href="--><?php //= $el->url ?><!--">--><?php //= $el->nom ?><!--</a></li>-->
-<!--    --><?php //}
-//} ?>
-<?php //= (!empty(BOOTSTRAP_JS)) ? Tools::mapJs(BOOTSTRAP_JS) : ''; ?>
-
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-12 col-12 d-flex align-items-center mb-4 pb-2">
-                <div>
-                    <img src="/themes/source/images/bubbles.png" class="logo img-fluid" alt="">
-                </div>
-
-                <ul class="footer-menu d-flex flex-wrap ms-5">
-                    <li class="footer-menu-item"><a href="#" class="footer-menu-link">About Us</a></li>
-
-                    <li class="footer-menu-item"><a href="#" class="footer-menu-link">Blog</a></li>
-
-                    <li class="footer-menu-item"><a href="#" class="footer-menu-link">Reviews</a></li>
-
-                    <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-5 col-12 mb-4 mb-lg-0">
-                <h5 class="site-footer-title mb-3">Our Services</h5>
-
-                <ul class="footer-menu">
-                    <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">
-                            <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                            House Cleaning
-                        </a>
-                    </li>
-
-                    <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">
-                            <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                            Car Washing
-                        </a>
-                    </li>
-
-                    <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">
-                            <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                            Laundry
-                        </a>
-                    </li>
-
-                    <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">
-                            <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                            Office Cleaning
-                        </a>
-                    </li>
-
-                    <li class="footer-menu-item">
-                        <a href="#" class="footer-menu-link">
-                            <i class="bi-chevron-double-right footer-menu-link-icon me-2"></i>
-                            Toilet Cleaning
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 mb-md-0">
-                <h5 class="site-footer-title mb-3">Office</h5>
-
-                <p class="text-white d-flex mt-3 mb-2">
-                    <i class="bi-geo-alt-fill me-2"></i>
-                    Akershusstranda 20, 0150 Oslo, Norway
-                </p>
-
-                <p class="text-white d-flex mb-2">
-                    <i class="bi-telephone-fill me-2"></i>
-
-                    <a href="tel: 110-220-9800" class="site-footer-link">
-                        110-220-9800
-                    </a>
-                </p>
-
-                <p class="text-white d-flex">
-                    <i class="bi-envelope-fill me-2"></i>
-
-                    <a href="mailto:info@company.com" class="site-footer-link">
-                        info@company.com
-                    </a>
-                </p>
-
-                <ul class="social-icon mt-4">
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link button button--skoll">
-                            <span></span>
-                            <span class="bi-twitter"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link button button--skoll">
-                            <span></span>
-                            <span class="bi-facebook"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link button button--skoll">
-                            <span></span>
-                            <span class="bi-instagram"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-6 mt-3 mt-lg-0 mt-md-0">
-                <div class="featured-block">
-                    <h5 class="text-white mb-3">Service Hours</h5>
-
-                    <strong class="d-block text-white mb-1">Mon - Fri</strong>
-
-                    <p class="text-white mb-3">8:00 AM - 5:30 PM</p>
-
-                    <strong class="d-block text-white mb-1">Sat</strong>
-
-                    <p class="text-white mb-0">6:00 AM - 2:30 PM</p>
-                </div>
-            </div>
+<div style="width: 1728px; height: 281px; padding-top: 21px; padding-bottom: 46px; padding-left: 294px; padding-right: 294px; background: white; justify-content: center; align-items: center; display: inline-flex">
+  <div style="height: 214px; padding-left: 15px; padding-right: 15px; opacity: 0.96; justify-content: space-between; align-items: flex-start; display: inline-flex">
+    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
+      <div style="width: 471px; height: 148px; position: relative">
+        <div style="width: 456px; height: 21px; left: 0px; top: 0px; position: absolute"><span style="color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Innofab</span><span style="color: #313030; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word"> est financé par l’Union Européenne dans le cadre du fond Feder</span></div>
+        <img style="width: 86.66px; height: 67.58px; left: 0px; top: 36px; position: absolute" src="https://via.placeholder.com/87x68" />
+        <img style="width: 86.66px; height: 86.66px; left: 122px; top: 36px; position: absolute" src="https://via.placeholder.com/87x87" />
+        <img style="width: 86.66px; height: 60.66px; left: 244px; top: 36px; position: absolute" src="https://via.placeholder.com/87x61" />
+        <img style="width: 86.66px; height: 52.64px; left: 366px; top: 36px; position: absolute" src="https://via.placeholder.com/87x53" />
+      </div>
+      <div style="width: 471px; height: 66px; position: relative">
+        <div style="height: 18px; padding-top: 1.49px; padding-bottom: 1.49px; padding-right: 2.99px; left: 0px; top: 55px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+          <div style="width: 15.01px; height: 15.01px; background: #313030"></div>
         </div>
+        <div style="width: 305.91px; height: 16px; left: 24px; top: 38px; position: absolute; color: #313030; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word"> Mercredi - Jeudi - Vendredi | 10h - 12h 14h - 18h</div>
+        <div style="width: 318.66px; height: 37px; left: 0px; top: 0px; position: absolute; color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Horaire d'ouverture</div>
+      </div>
     </div>
-
-    <div class="site-footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-12">
-                    <p class="copyright-text mb-0">Copyright © 2036 Clean Work Co., Ltd.</p>
-                </div>
-
-                <div class="col-lg-6 col-12 text-end">
-                    <p class="copyright-text mb-0">
-                        // Designed by <a href="https://www.tooplate.com" target="_parent">Tooplate</a> //</p>
-                </div>
-
-            </div>
+    <div style="width: 300px; position: relative">
+      <div style="width: 148px; height: 21px; left: 0px; top: 0px; position: absolute; color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Membres fondateurs</div>
+      <img style="width: 300px; height: 158px; left: 0px; top: 32px; position: absolute" src="https://via.placeholder.com/300x158" />
+    </div>
+    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 60px; display: inline-flex">
+      <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
+        <div style="width: 132.07px; height: 21px; color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Contact</div>
+        <div style="justify-content: flex-start; align-items: flex-end; gap: 10px; display: inline-flex">
+          <div style="width: 15px; height: 14.63px; background: #1F2243"></div>
+          <div style="width: 100.14px; height: 16px; color: #1F2243; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word"> 07.49.10.60.31</div>
         </div>
+        <div style="justify-content: flex-start; align-items: center; gap: 10px; display: inline-flex">
+          <div style="width: 15.39px; height: 11.99px; background: #1F2243"></div>
+          <div style="width: 207px; height: 16px; color: #1D2140; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word">fabmanager.innofab@gmail.com</div>
+        </div>
+      </div>
+      <div style="width: 232px; height: 67px; position: relative">
+        <div style="width: 228.45px; height: 21px; left: 3.55px; top: 0px; position: absolute; color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Réseau Sociaux</div>
+        <div style="width: 169px; height: 36px; padding-left: 1px; padding-right: 4.22px; left: 0px; top: 31px; position: absolute; justify-content: center; align-items: flex-start; gap: 7px; display: inline-flex">
+          <div style="width: 36px; align-self: stretch; padding-left: 11.78px; padding-right: 11.78px; padding-top: 6px; padding-bottom: 6px; background: #EA581C; border-radius: 18px; justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 12.44px; height: 24px; background: white"></div>
+          </div>
+          <div style="width: 36px; align-self: stretch; padding-top: 6px; padding-bottom: 6px; padding-left: 7.89px; padding-right: 7.13px; background: #EA581C; border-radius: 18px; justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 20.98px; height: 24px; background: white"></div>
+          </div>
+          <div style="width: 36px; align-self: stretch; padding: 6px; background: #EA581C; border-radius: 18px; justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 24px; height: 24px; background: white"></div>
+          </div>
+          <div style="width: 36px; align-self: stretch; padding-top: 4px; padding-bottom: 4px; padding-left: 4.22px; padding-right: 3.78px; background: #EA581C; border-radius: 18px; justify-content: center; align-items: center; display: inline-flex">
+            <div style="flex: 1 1 0; align-self: stretch; justify-content: center; align-items: center; display: inline-flex">
+              <div style="width: 28px; height: 28px; position: relative">
+                <div style="width: 28px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
+                <div style="width: 23.33px; height: 18.67px; left: 2.33px; top: 4.67px; position: absolute; background: white"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</footer>
+  </div>
+</div>

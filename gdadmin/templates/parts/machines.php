@@ -19,14 +19,13 @@
                     if(!empty($data['datas'])){
                         foreach($data['datas'] as $el){?>
                             <tr>
-                                <td><i class="fas fa-arrows-alt"></i></td>
-                                <td>Tag<?=substr(@$el->tag , 0, 50); ?></td>
-                                <td>Nom<?=substr(@$el->nom , 0, 50); ?></td>
-                                <td>Description<?=substr(@$el->description , 0, 50); ?></td>
-                                <td>Publié : <?= (@$el->active)? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                <td><?=substr(@$el->tag , 0, 50); ?></td>
+                                <td><?=substr(@$el->nom , 0, 50); ?></td>
+                                <td><?=substr(@$el->description , 0, 50); ?></td>
+                                <td>PubliÃ© : <?= (@$el->active)? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
                                 <td class="td-actions text-right">
                                     <a href="<?= $_SERVER['REQUEST_URI'] ?>/set/<?= $el->id ?>" class="btn btn-warning btn-link btn-lg"><i class="fas fa-pen"></i></a>
-                                    <a href="<?= $_SERVER['REQUEST_URI'] ?>/delete/<?= $el->id ?>" onclick="return confirm('Êtes-vous de vouloir effectuer cette action ?')" class="btn btn-danger btn-link btn-lg"><i class="fas fa-times"></i></a>
+                                    <a href="<?= $_SERVER['REQUEST_URI'] ?>/delete/<?= $el->id ?>" onclick="return confirm('ï¿½tes-vous de vouloir effectuer cette action ?')" class="btn btn-danger btn-link btn-lg"><i class="fas fa-times"></i></a>
                                 </td>
                             </tr>
                         <?php }

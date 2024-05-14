@@ -62,3 +62,43 @@ function sendDeleteBlock(blockId) {
     }
 }
 
+tinymce.init({
+    selector: '#editor',
+    plugins: 'autolink lists link image charmap print preview hr anchor pagebreak textcolor',
+    toolbar: 'undo redo | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor',
+});
+
+$(document).ready(function(){
+    let clickedEditableContent; // Variable pour stocker la référence à l'élément .editable-content cliqué
+
+    $('.editable-content').click(function(event) {
+        event.stopPropagation();
+        clickedEditableContent = $(this); // Stocker la référence à l'élément cliqué
+        let content = $(this).html();
+        tinymce.activeEditor.setContent(content);
+        $('#editor-popup').show();
+    });
+
+    $('#save').click(function() {
+        let content = tinymce.activeEditor.getContent();
+        clickedEditableContent.html(content); // Utiliser la référence à l'élément cliqué
+        let wrapperId = clickedEditableContent.closest('.el-wrapper').data('id'); // Cibler l'élément parent de l'élément cliqué
+        let editableContentId = clickedEditableContent.attr('id');
+
+        $('#editor-popup').hide();
+
+        $.ajax({
+            url: '/liveedit',
+            type: 'POST',
+            data: {content: content, wrapperId: wrapperId, editableContentId: editableContentId},
+            success: function(response) {
+                location.reload();
+            }
+        });
+    });
+
+    $('.popup-overlay').click(function() {
+        $('#editor-popup').hide();
+    });
+});
+

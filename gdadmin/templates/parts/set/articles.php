@@ -21,8 +21,11 @@
                 <form class="row" method="post" enctype="multipart/form-data">
                 <?= Tools::generateInput("text", "Titre", "titre", @$el->{"titre"._PREFIX_LANG_}, "col-6"); ?>
                 <?= Tools::generateInput("date", "Date", "date", @$el->date, "col-6"); ?>
+                <?= Tools::generateInput("text", "Categorie", "categorie", @$el->{"categorie"._PREFIX_LANG_}, "col-6"); ?>
+                <?= Tools::generateInput("text", "Auteur", "auteur", @$el->auteur, "col-6"); ?>
+                <?= Tools::generateInput("textarea", "Résumé", "description", @$el->{"description"._PREFIX_LANG_}, "col-12"); ?>
                 <?= Tools::generateInput("file", "Illustration", "illustration", @$el->illustration, 'col-12'); ?>
-                <?= Tools::generateInput("textarea", "Contenu", "content", @$el->{"text_1"._PREFIX_LANG_}, 'col-12'); ?>
+                <?= Tools::generateInput("textarea", "Contenu", "texte", @$el->{"texte"._PREFIX_LANG_}, 'col-12'); ?>
                 <?= Tools::generateInput("radio", "Publié", "active", @$el->active, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>
                 <?= Tools::generateInput("hidden", "", "id", @$el->id); ?>
                 <?= Tools::generateInput("submit", "", "", "Valider", "btn-style2 float-right"); ?>

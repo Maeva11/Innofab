@@ -1,0 +1,111 @@
+body {
+    background-color: #f7f7f7;
+}
+
+#page-42 .connexion {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -30%;
+}
+
+#page-42 .connexion-2 {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    display: inline-flex;
+}
+
+#page-42 .connexion-title {
+    width: 335px;
+    height: 77px;
+    text-align: center;
+    color: black;
+    font-size: 56px;
+    font-family: Poppins;
+    font-weight: 800;
+    word-wrap: break-word;
+}
+
+#page-42 .champ-connexion {
+    position: relative;
+    width: 479px;
+    height: 76px;
+}
+
+#page-42 .champ-connexion input {
+    width: 100%;
+    height: 32px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px black solid;
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+#page-42 .icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: black;
+}
+
+#page-42 .btn-connexion {
+    width: 155px;
+    height: 40px;
+    background: #1F2243;
+    border-radius: 20px;
+    color: #FCFCFC;
+    font-size: 25px;
+    font-family: Poppins;
+    font-weight: 700;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+#page-42 .link-container {
+    font-size: 20px;
+    font-family: Poppins;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#page-42 .illustration {
+    width: 140px;
+    height: 200px;
+    left: 57px;
+    top: 420px;
+    position: absolute;
+    border-radius: 20px;
+
+}
+
+.forget-pwd {
+    left: 306px;
+    position: absolute;
+    color: #394198;
+    font-size: 15px;
+    font-family: Poppins;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+a {
+    color: #394198;
+}

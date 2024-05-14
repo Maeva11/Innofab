@@ -65,10 +65,11 @@ $app->post('/blockBuilder[/{action}[/{id}]]', function (Request $request, Respon
     Tools::redirect(ADMIN_URL . 'blockBuilder');
 });
 
-$app->post('/blockbuilder', function (Request $request, Response $response, $args) use ($app) {
-    (new Blockbuilder())->set($_POST);
-    return $response;
-});
+//$app->post('/blockbuilder', function (Request $request, Response $response, $args) use ($app) {
+//    (new Blockbuilder())->set($_POST);
+//    return $response;
+//});
+
 $app->get('/pageBuilder[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
     $builder = new Pagebuilder();
     if (@$args['action'] == "set") {

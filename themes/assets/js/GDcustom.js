@@ -36,3 +36,4 @@ if(getCookie("cookie") != ""){
 }else{
    $('.consent-cookie').addClass("active");
 }
+

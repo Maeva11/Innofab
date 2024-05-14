@@ -231,4 +231,8 @@ class Structure extends Controller
             }
         }
     }
+
+    public function update_structure ($id, $value) {
+        $this->model->update(['value' => $value], ['id' => $id]);
+    }
 }

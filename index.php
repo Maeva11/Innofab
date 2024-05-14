@@ -1,4 +1,5 @@
 <?php
+
 include 'configuration.php';
 use Slim\Factory\AppFactory;
 require 'vendor/autoload.php';

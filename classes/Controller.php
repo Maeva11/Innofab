@@ -1,31 +1,19 @@
 <?php
 
-/* controller recoit données et communique à GWModel.php */
-
 class Controller
 {
 
     protected $model;
-    protected $allowFileNames = ["illustration", "image", "image_1", "image_2", "image_3", "image_4", "drapeau", "logo", 'pdf', "profil, image_service"];
-    protected $i18n = false;
+    protected $allowFileNames = ["illustration", "image", "image_1", "image_2", "drapeau"];
 
     function __construct()
     {
         $this->model = new GWModel();
     }
 
-    public function getModel()
-    {
-        return $this->model;
-    }
+    public function getModel(){return $this->model;}
 
-    public function setI18n($bool = true)
-    {
-        $this->model->i18n = $bool;
-        $this->i18n = $bool;
-    }
-
-    /*public function i18nfield($field)
+    public function i18nfield($field)
     {
         $this->model->addi18nfield($field);
     }
@@ -33,12 +21,11 @@ class Controller
     public function i18nfields($fields)
     {
         $this->model->seti18n($fields);
-    }*/
+    }
 
     public function getWithPaging($page = 1, $per_page = 10, $order_by = 'date', $order_sort = 'DESC')
     {
-        $params = [];
-        return $this->model->select($params, $order_by, $order_sort, (((int)$page - 1) * $per_page) . ' , ' . $per_page);
+        return $this->model->select([], $order_by, $order_sort, (((int)$page - 1) * $per_page) . ' , ' . $per_page);
     }
 
     public function getBy($params, $order_by = 'id', $order_sort = 'ASC', $limit = false)
@@ -47,19 +34,6 @@ class Controller
         return $aDatas;
     }
 
-
-    public function copy($lang_from, $lang_to)
-    {
-        $id_lang_from = Tools::getLangId($lang_from);
-        $id_lang_to = Tools::getLangId($lang_to);
-        $this->setI18n(false);
-        $datas = $this->getBy(['id_lang' => $id_lang_from]);
-        foreach($datas as $data){
-            unset($data->id);
-            $data->id_lang = $id_lang_to;
-            $this->set((array)$data);
-        }
-    }
     public function remove($id = 0)
     {
         if ($id == 0) return false;
@@ -76,11 +50,9 @@ class Controller
 
         return false;
     }
-
     public function getAll($order_by = 'id', $order_sort = 'DESC')
     {
-        $params = [];
-        $datas = $this->getBy($params, $order_by, $order_sort);
+        $datas = $this->getBy([], $order_by, $order_sort);
         if ($datas)
             foreach ($datas as &$data)
                 if (!empty($data->datas))
@@ -88,8 +60,7 @@ class Controller
         return $datas;
     }
 
-    public function set($params, $files = [])
-    {
+    public function set($params, $files = []){
         (isset($params['password'])) ? $params['password'] = password_hash($params['password'], PASSWORD_DEFAULT) : '';
         (isset($params['date'])) ? $params['date'] = implode('-', array_reverse(explode('/', $params['date']))) : '';
         $sSQLChamps = '';
@@ -105,23 +76,16 @@ class Controller
                 foreach ($this->allowFileNames as $fileName) {
                     if (!empty($files[$fileName]['name'])) {
                         $result = (new Upload())->upload_file($files, '../', $fileName);
-                        if ($result !== false) {
+                        if ($result !== false){
                             $aDatas[$fileName] = $result;
                         }
                     }
                 }
             }
         }
-
-        if (!empty($params['id'])) {
-            $sql = 'UPDATE ' . $this->model->getTable() . ' SET ' . $sSQLChamps . ' WHERE id=' . $params['id'];
-        } else {
-            $sql = 'INSERT INTO ' . $this->model->getTable() . ' SET ' . $sSQLChamps;
-        }
-
-
+        (!empty($params['id'])) ? $sql = 'UPDATE ' . $this->model->getTable() . ' SET ' . $sSQLChamps . ' WHERE id='.$params['id'] : $sql = 'INSERT INTO ' . $this->model->getTable() . ' SET ' . $sSQLChamps;
         $this->model->query($sql, $aDatas);
-        return $this->model->lastInsertId();
+        return true;
     }
 
     public function count()
@@ -159,10 +123,5 @@ class Controller
     public function removeImage($block, $cible = 0)
     {
         $req = $this->model->getDb()->prepare("DELETE FROM `" . DB_PREFIX . "image` WHERE `type` = '$block' and `id` = $cible");
-    }
-
-    public function lastInsertId()
-    {
-        return $this->model->getDb()->lastInsertId();
     }
 }

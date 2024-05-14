@@ -444,3 +444,4 @@ function initIcon() {
         $(this).parent().next().html('<i class="fa fa-2x ' + $(this).val() + '"></i>');
     });
 }
+

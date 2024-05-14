@@ -1,47 +1,143 @@
+.tariff-card3 {
+    background-color: white;
+    width: 223px;
+    height: 270px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
 
-  .tariff-container {
+.tariff-card2 {
+    background-color: white;
+    width: 223px;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.tariff-card1 {
+    background-color: white;
+    width: 223px;
+    height: 330px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.tariff-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-  }
+    gap: 0px;
+    align-items: flex-end;
+}
 
-  .tariff-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 200px;
-  }
-
-  .tariff-card h2 {
-    margin: 0;
-    padding: 20px;
-    background-color: #f3f3f3;
-    color: #333;
-    text-align: center;
-  }
-
-  .tariff-card p {
-    margin: 0;
-    padding: 15px;
-    text-align: center;
-    background-color: #fff;
-    color: #666;
-  }
-
-  .tariff-card button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: orange;
+.tariff-header {
+    background-color: #ff6f00;
     color: white;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bold;
+}
 
-  .tariff-card button:hover {
-    background-color: darkorange;
-  }
+.tariff-header1 {
+    background-color: #1F2243;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.tariff-body {
+    background-color: #fff;
+    text-align: center;
+    color: #333;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tariff-price {
+    font-size: 2.5em;
+    line-height: 1;
+    margin-bottom: 25px;
+    margin-top: 30px;
+    display: flex;
+    align-items: baseline;
+}
+
+.tariff-price span {
+    font-size: 0.5em;
+    vertical-align: super;
+}
+
+.tariff-button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    display: block;
+    width: calc(100% - 70px);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.tariff-button1 {
+    background-color: #1F2243;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    display: block;
+    width: calc(100% - 70px);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 30px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.tariff-button:hover {
+    background-color: #e65e00;
+}
+
+.tariff-font-price {
+    font-size: 3em;
+    line-height: 1;
+}
+
+.tariff-font-others {
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.tariff-title1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.tariff-title2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+  

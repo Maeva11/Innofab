@@ -55,6 +55,7 @@
                                     class="fas fa-puzzle-piece"></i>
                             <p>Configuration</p></a></li>
                 <?php } ?>
+                <div class="post-divider"></div>
                 <?php
                 $menu = (new Admin())->getDatas('', 'menu')['datas'];
                 foreach ($menu as $el) { ?>
@@ -88,6 +89,7 @@
             if (!empty($data['block'])) {
                 foreach ($data['block'] as $block) {
                     include('parts/' . $block . '.php');
+                    include ('parts/stats.php');
                 }
             }
             ?>

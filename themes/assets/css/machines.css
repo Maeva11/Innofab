@@ -1,0 +1,168 @@
+#page-43 {
+    .listing-machines {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-around; /* Change to space-around for even spacing */
+        padding: 2%;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .machines-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .machine-card {
+        width: 250px;
+        margin: 15px; 
+        height: 390px;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        font-family: 'Poppins';
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        align-items: center;
+        position: relative;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .machine-color-feature {
+        width: 129px;
+        height: 195px;
+        position: absolute;
+        left: 60px;
+        top: 0; 
+    }
+
+    .top-rectangle {
+        width: 250px;
+        height: 132px;
+        background-color: #1F2243;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        position: absolute;
+        top: 0;
+        left: -60px;
+        transform: none; 
+        z-index: -1;
+    }
+
+    .listing-machines .machine-card:nth-child(even) .top-rectangle {
+        background-color: #EA581D;
+    } 
+
+
+    .middle-rectangle {
+        width: 129px;
+        height: 136px;
+        background-color: #747CF9;
+    }
+
+    .middle-ellipse {
+        width: 129px;
+        height: 125px;
+        background-color: #747CF9;
+        border-radius: 9999px;
+        position: absolute;
+        top: 70px;
+    }
+
+    .listing-machines .machine-card:nth-child(even) .middle-rectangle {
+        background-color: #EB936C;
+    } 
+
+    .listing-machines .machine-card:nth-child(even) .middle-ellipse {
+        background-color: #EB936C;
+    } 
+    
+    .machine-nom {
+        color: black;
+        font-weight: 700;
+        font-size: 11px;
+        position: absolute;
+        top: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        z-index: 10;
+        text-transform: uppercase; 
+        letter-spacing: 1.65px; 
+        word-wrap: break-word"
+    }
+
+    .machine-description {
+        color: #666666;
+        font-weight: 600;
+        font-size: 8px;
+        text-align: center;
+        justify-content: center;
+        text-transform: uppercase;
+        letter-spacing: 1.65px;
+        word-wrap: break-word;
+        position: absolute;
+        top: 275px;
+        padding: 2%;
+    }
+
+    .machine-detail-link {
+        width: 250px;
+        height: 39px;
+        background-color: #747CF9;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .listing-machines .machine-card:nth-child(even) .machine-detail-link {
+        width: 250px;
+        height: 39px;
+        background-color: #EB936C;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .machine-detail-link a {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 1.65px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .machine-img {
+        position: absolute;
+        top: 35%;  
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        max-width: 100%; 
+        max-height: 100%;
+    }
+
+    .title-machines {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+    }
+}
