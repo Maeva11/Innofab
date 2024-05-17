@@ -68,10 +68,10 @@ tinymce.init({
     toolbar: 'undo redo | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor',
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     let clickedEditableContent; // Variable pour stocker la référence à l'élément .editable-content cliqué
 
-    $('.editable-content').click(function(event) {
+    $('.editable-content').click(function (event) {
         event.stopPropagation();
         clickedEditableContent = $(this); // Stocker la référence à l'élément cliqué
         let content = $(this).html();
@@ -79,7 +79,7 @@ $(document).ready(function(){
         $('#editor-popup').show();
     });
 
-    $('#save').click(function() {
+    $('#save').click(function () {
         let content = tinymce.activeEditor.getContent();
         clickedEditableContent.html(content); // Utiliser la référence à l'élément cliqué
         let wrapperId = clickedEditableContent.closest('.el-wrapper').data('id'); // Cibler l'élément parent de l'élément cliqué
@@ -91,14 +91,41 @@ $(document).ready(function(){
             url: '/liveedit',
             type: 'POST',
             data: {content: content, wrapperId: wrapperId, editableContentId: editableContentId},
-            success: function(response) {
+            success: function (response) {
                 location.reload();
             }
         });
     });
 
-    $('.popup-overlay').click(function() {
+    $('.popup-overlay').click(function () {
         $('#editor-popup').hide();
+        $('#editor-dropify').hide();
     });
-});
 
+    // $('.editable-img').on('click', function () {
+    //     $('#editor-dropify').show();
+    //
+    //     clickedEditableContent = $(this);
+    //     let wrapperId = clickedEditableContent.closest('.el-wrapper').data('id');
+    //
+    //     $('#editor-dropify form').on('submit', function (e) {
+    //         e.preventDefault();
+    //         let fileInput = $('#file')[0].files[0];
+    //
+    //         let formData = new FormData();
+    //         formData.append('file', fileInput);
+    //         formData.append('wrapperId', wrapperId);
+    //
+    //         $.ajax({
+    //             url: '/uploadimg',
+    //             type: 'POST',
+    //             data: formData,
+    //             processData: false, // N'effectuez pas de traitement sur les données
+    //             contentType: false, // N'ajoutez pas d'en-tête de type de contenu
+    //             success: function (response) {
+    //                 // location.reload();
+    //             }
+    //         });
+    //     });
+    // });
+});

@@ -75,7 +75,7 @@ class Controller
             if (!empty($this->allowFileNames)) {
                 foreach ($this->allowFileNames as $fileName) {
                     if (!empty($files[$fileName]['name'])) {
-                        $result = (new Upload())->upload_file($files, '../', $fileName);
+                        $result = (new Upload())->upload_image($files, '../', $fileName);
                         if ($result !== false){
                             $aDatas[$fileName] = $result;
                         }

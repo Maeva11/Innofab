@@ -99,24 +99,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <?= (!empty(JQUERY_UI)) ? Tools::mapJs(JQUERY_UI) : ''; ?>
 <script src="<?= ADMIN_URL ?>assets/js/gdadmin.js"></script>
-<script>
-    /**  $("textarea:not('textarea#structure')").each(function () {
-     Simditor.locale = 'en-US';
-     editor = new Simditor({
-     textarea: $(this),
-     placeholder: '',
-     toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'],
-     pasteImage: true,
-     defaultImage: 'assets/images/image.png',
-     forced_root_block : false,
-     force_br_newlines : true,
-     force_p_newlines : false,
-     upload: location.search === '?upload' ? {
-     url: '/upload'
-     } : false
-     });
-     });**/
-</script>
 </body>
 
 </html>

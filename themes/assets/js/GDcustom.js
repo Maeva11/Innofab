@@ -37,3 +37,35 @@ if(getCookie("cookie") != ""){
    $('.consent-cookie').addClass("active");
 }
 
+$(document).ready(function () {
+   // Fonction pour déplacer le carousel vers la gauche
+   function moveCarouselLeft() {
+      var $currentAct = $(".list .act");
+      var $nextAct = $currentAct.next().length ? $currentAct.next() : $(".list li").first();
+      var $prevAct = $currentAct.prev().length ? $currentAct.prev() : $(".list li").last();
+
+      $(".list li").removeClass("act prev next");
+
+      $currentAct.removeClass("act").addClass("prev");
+      $nextAct.removeClass("prev next").addClass("act");
+      $prevAct.removeClass("prev next").addClass("next");
+
+      $(".list li").not(".act").css("opacity", "0.25");
+      $(".list .act").css("opacity", "1");
+
+      $(".swipe").animate({left: '-=220px'}, 500, function () {
+         $(".swipe").css("left", "-=220px");
+      });
+   }
+
+   // Déplacement automatique du carrousel toutes les 15 secondes
+   var interval = setInterval(function () {
+      moveCarouselLeft();
+   }, 5000);
+
+   // Clic sur une carte du carrousel (désactivé)
+   $(".list li").click(function () {
+      // Désactiver les clics pendant le déplacement automatique
+      return false;
+   });
+});

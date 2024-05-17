@@ -38,6 +38,7 @@
     <link href="/themes/assets/css/connexion.css" rel="stylesheet">
     <link href="/themes/assets/css/footer.css" rel="stylesheet">
     <link href="/themes/assets/css/header.css" rel="stylesheet">
+    <link href="/themes/assets/css/rendezVous.css" rel="stylesheet">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=CODE-GTAG"></script>
     <script>
@@ -62,6 +63,15 @@
         <button id="save" class="save-button"> Enregistrer
             <span></span>
         </button>
+    </div>
+</div>
+
+<div class="popup-overlay" id="editor-dropify">
+    <div class="popup-content">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" class="dropify" data-max-file-size="2M" data-allowed-file-extensions="jpg jpeg png gif" />
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
     </div>
 </div>
 
@@ -110,6 +120,8 @@ if (!empty($_SESSION["auth"]) && $_SESSION["auth"] == 'true' && $_SESSION["role"
 <script src="/themes/source/js/animated-headline.js"></script>
 <script src="/themes/source/js/custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
+<script src="/themes/assets/js/rendezVous.js"></script>
+<script src="/themes/assets/js/GDcustom.js"></script>
 
 <script>
     // Chargement de l'API YouTube Player

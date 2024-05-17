@@ -142,7 +142,7 @@ class Structure extends Controller
             if (ROOT) {
                 $delete = '<span class="deleteBlock">+</span>';
                 //add block id on html
-                $html .= '<div class="display-block"><a href="/gdadmin/blockBuilder/set/'.$element->id_block.'">id_block: ' . $element->id_block . '</a> / id : ' . $element->id . '</div>';
+//                $html .= '<div class="display-block"><a href="/gdadmin/blockBuilder/set/'.$element->id_block.'">id_block: ' . $element->id_block . '</a> / id : ' . $element->id . '</div>';
             }
 
             if (ADMIN) {

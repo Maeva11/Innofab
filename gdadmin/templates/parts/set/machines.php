@@ -20,6 +20,7 @@
             <div class="tab-pane active">
                 <form class="row" method="post" enctype="multipart/form-data">
                 <?= Tools::generateInput("text", "Nom", "nom", @$el->{"nom"._PREFIX_LANG_}, "col-6"); ?>
+                <?= Tools::generateInput("textarea", "Info", "info", @$el->{"info". _PREFIX_LANG_}, 'col-12'); ?>
                 <?= Tools::generateInput("file", "Image", "image", @$el->image, 'col-12'); ?>
                 <?= Tools::generateInput("textarea", "Description", "description", @$el->{"description"._PREFIX_LANG_}, 'col-12'); ?>
                 <?= Tools::generateInput("text", "Tag", "tag", @$el->tag, 'col-4', '', ['oui'=> 1, 'non'=>0]); ?>

@@ -64,6 +64,16 @@ $app->post('/connexion', function (Request $request, Response $response, $args) 
     return $response;
 });
 
+$app->post('/uploadimg', function (Request $request, Response $response, $args) use ($app) {
+    $Structure = new Structure();
+    $id_structure = $_POST['wrapperId'];
+    $structure = $Structure->get($id_structure);
+
+    $editableContentId = $_POST['editableContentId'];
+
+    var_dump($_POST);die;
+});
+
 $app->post('/liveedit', function (Request $request, Response $response, $args) use ($app) {
     $Structure = new Structure();
     $id_structure = $_POST['wrapperId'];
@@ -80,5 +90,27 @@ $app->post('/liveedit', function (Request $request, Response $response, $args) u
     return $response;
 });
 
+$app->post('/prise-rendez-vous', function (Request $request, Response $response, $args) use ($app) {
+    $regex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
 
+    $lastName = $_POST['lastname'];
+    $firstName = $_POST['firstname'];
+    $email = $_POST['email'];
+    $date = $_POST['selectedDate'];
+
+    $selectedDate = new DateTime($date);
+    $currentDate = new DateTime();
+    
+    if(preg_match($regex, $email)) {
+        Tools::setFlash('danger', 'Veuiller saisir un email conforme');
+        Tools::redirect('/prise-rendez-vous');
+    }
+
+    if ($selectedDate < $currentDate) {
+        Tools::setFlash('danger', 'Veuiller saisir une date inférieur à celle d\' aujourd\'hui');
+        Tools::redirect('/prise-rendez-vous');
+    }
+
+    return $response;
+});
 

@@ -1,5 +1,5 @@
-<div style="width: 1728px; height: 281px; padding-top: 21px; padding-bottom: 46px; padding-left: 294px; padding-right: 294px; background: white; justify-content: center; align-items: center; display: inline-flex">
-  <div style="height: 214px; padding-left: 15px; padding-right: 15px; opacity: 0.96; justify-content: space-between; align-items: flex-start; display: inline-flex">
+<div style="width: 100%; max-width: 1728px; height: 281px; padding-top: 21px; padding-bottom: 46px; padding-left: 20px; padding-right: 20px; background: white; justify-content: center; align-items: center; display: flex; box-sizing: border-box;">
+  <div style="height: 214px; padding-left: 15px; padding-right: 15px; opacity: 0.96; justify-content: space-between; align-items: flex-start; display: flex;">
     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; display: inline-flex">
       <div style="width: 471px; height: 148px; position: relative">
         <div style="width: 456px; height: 21px; left: 0px; top: 0px; position: absolute"><span style="color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Innofab</span><span style="color: #313030; font-size: 14px; font-family: Roboto; font-weight: 400; line-height: 21px; word-wrap: break-word"> est financé par l’Union Européenne dans le cadre du fond Feder</span></div>
@@ -18,7 +18,7 @@
     </div>
     <div style="width: 300px; position: relative">
       <div style="width: 148px; height: 21px; left: 0px; top: 0px; position: absolute; color: #EA581C; font-size: 14px; font-family: Roboto; font-weight: 700; line-height: 21px; word-wrap: break-word">Membres fondateurs</div>
-      <img style="width: 300px; height: 158px; left: 0px; top: 32px; position: absolute" src="https://via.placeholder.com/300x158" />
+      <img class="membres-partner" src="/themes/assets/images/membres.png" />
     </div>
     <div style="flex-direction: column; justify-content: flex-start; align-items: flex-end; gap: 60px; display: inline-flex">
       <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 10px; display: flex">
@@ -45,7 +45,7 @@
             <div style="width: 24px; height: 24px; background: white"></div>
           </div>
           <div style="width: 36px; align-self: stretch; padding-top: 4px; padding-bottom: 4px; padding-left: 4.22px; padding-right: 3.78px; background: #EA581C; border-radius: 18px; justify-content: center; align-items: center; display: inline-flex">
-            <div style="flex: 1 1 0; align-self: stretch; justify-content: center; align-items: center; display: inline-flex">
+            <div style="flex: 1 1 0; justify-content: center; align-items: center; display: inline-flex">
               <div style="width: 28px; height: 28px; position: relative">
                 <div style="width: 28px; height: 28px; left: 0px; top: 0px; position: absolute"></div>
                 <div style="width: 23.33px; height: 18.67px; left: 2.33px; top: 4.67px; position: absolute; background: white"></div>
@@ -56,4 +56,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>  

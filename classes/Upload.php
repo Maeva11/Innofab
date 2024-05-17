@@ -73,7 +73,7 @@ class Upload
                     // Parcours du tableau d'erreurs
                     if (isset($files[$name]['error']) && UPLOAD_ERR_OK === $files[$name]['error']) {
                         // On renomme le fichier
-                        $new_name = rand() . date('mdHis') . '_' . Tools::slug_file($files[$name]['name']);//md5(uniqid()) .'.'. $extension;
+                        $new_name = rand() . date('mdHis') . '_' . Tools::slug_file($files[$name]['name']);
                         // Si c'est OK, on teste l'upload
                         if (move_uploaded_file($files[$name]['tmp_name'], DIRNAME(__FILE__) . '/' . $chemin . $this->TARGET . $new_name)) {
                             if (file_exists(DIRNAME(__FILE__) . '/' . $chemin . $this->TARGET . $new_name)) {
