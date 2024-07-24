@@ -9,3 +9,20 @@
     height: 1px;
     background: rgb(255 255 255 / 10%);
 }
+
+.sidebar .sidebar-wrapper {
+    scrollbar-width: none;
+}
+
+.console .items {
+    background: white !important;
+}
+
+.item-color {
+    color: #e6007e !important;
+}
+.title-items {
+    color: black;
+    z-index: 999;
+    position: relative;
+}

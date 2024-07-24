@@ -5,6 +5,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 
 /**********************ROUTES POST**********************/
+
 $app->post('/sendBlock', function (Request $request, Response $response, $args) use ($app) {
     $Structure = new Structure();
     $BlockBuilder = new BlockBuilder();
@@ -38,19 +39,21 @@ $app->post('/deleteBlock', function (Request $request, Response $response, $args
 
 
 $app->post('/connexion', function (Request $request, Response $response, $args) use ($app) {
-    $User = new users();
+    $Users = new users();
 
 
     $email = $_POST['email'] ?? '';
     $password = $_POST['pwd'] ?? '';
 
     try {
-        $id = $User->verifyPassword($email, $password);
+        $id = $Users->verifyPassword($email, $password);
         if ($id !== false) {
 
             $_SESSION["user"] = $id;
-            // TODO redirect to page user connected
-            //redirect to home
+            $current_user = $Users->getBy(['id' => $id]);
+            foreach($current_user as $user){
+                $_SESSION["nameUser"] = $user->prenom;
+            }
             Tools::redirect('/');
         } else {
             Tools::setFlash('danger', 'Mot de passe ou email incorrect');
@@ -91,26 +94,136 @@ $app->post('/liveedit', function (Request $request, Response $response, $args) u
 });
 
 $app->post('/prise-rendez-vous', function (Request $request, Response $response, $args) use ($app) {
-    $regex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
+    $Structure = new Structure();
+    $rendezVous = new PriseRendezVous();
 
-    $lastName = $_POST['lastname'];
-    $firstName = $_POST['firstname'];
+    $emailRegex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
+
+    $nom = $_POST['lastname'];
+    $prenom = $_POST['firstname'];
     $email = $_POST['email'];
-    $date = $_POST['selectedDate'];
+    $dateRendezVous = $_POST['selectedDate'];
+    $heureDebut = $_POST['selectHeure'];
 
-    $selectedDate = new DateTime($date);
-    $currentDate = new DateTime();
-    
-    if(preg_match($regex, $email)) {
-        Tools::setFlash('danger', 'Veuiller saisir un email conforme');
+    // Validation de l'email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        Tools::setFlash('danger', 'Veuillez saisir un email valide.');
         Tools::redirect('/prise-rendez-vous');
     }
-
-    if ($selectedDate < $currentDate) {
-        Tools::setFlash('danger', 'Veuiller saisir une date inférieur à celle d\' aujourd\'hui');
+    
+    // Validation de la date
+    $dateRendezVousObj = new DateTime($dateRendezVous);
+    $dateActuelle = new DateTime();
+    
+    if ($dateRendezVousObj < $dateActuelle) {
+        Tools::setFlash('danger', 'Veuillez saisir une date ultérieure à aujourd\'hui.');
         Tools::redirect('/prise-rendez-vous');
+    }
+    
+    $params = [
+        "nom" => $nom,
+        "prenom" => $prenom,
+        "email" => $email,
+        "dateRendezVous" => $dateRendezVous,
+        'heureDebut' => $heureDebut,
+        'accept' => 0
+    ];
+
+    $rendezVous->insertRdv($params);
+
+    $Mailer = new Mail();
+    $Mailer->setSubject("Demande de rendez vous");
+    $Mailer->setBody("<li>De : " . $nom . " " . $prenom . "</li><li>Le : " . $dateRendezVous . " à : " . $heureDebut . "</li>");
+    if ($Mailer->send()['success']) {
+        Tools::setFlash("success", 'Merci ! Nous vous répondrons dès que possible !');
+    } else {
+        Tools::setFlash("error", 'Désolé Votre message n\'a pas été envoyée  !');
+    }
+    Tools::redirect('/');
+
+    return $response;
+});
+
+
+$app->post('/machine/{id}/{nom}', function (Request $request, Response $response, $args) use ($app) {
+    $reservationMachine = new Reservation();
+    if(!isset($_SESSION['user']) || empty($_SESSION['user']) || $_SESSION['user']=="") {
+        header('Location: /connexion');
+        exit;
+    }else {
+        $parsedBody = $request->getParsedBody();
+        $idMachine = $parsedBody['machine_id'];
+        $idUser = $_SESSION['user'];
+        $dateDebut = $_POST['start_date'];
+        $dateFin = $_POST['end_date'];
+        $statut = 'En attente';
+        $reservationMachine->save($idMachine, $idUser, $dateDebut, $dateFin, $statut);
+
+        if ($reservationMachine) {
+            Tools::setFlash('success', 'Votre réservation a bien été prise en compte');
+        } else {
+            Tools::setFlash('danger', 'Une erreur est survenue lors de la réservation');
+        }
+        Tools::redirect('/utilisateur');
     }
 
     return $response;
 });
 
+
+$app->post('/utilisateur', function (Request $request, Response $response, $args) use ($app) {
+    $Users = new Users();
+    $Reservations = new Reservation();
+    $Machines = new Machines();
+
+    $idUser = $_SESSION['user'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $libelle = $_POST['libelle'];
+    $quantite = $_POST['quantite'];
+    $duree = $_POST['duree'];
+    $idConsommable = $_POST['consommable'];
+    $idMachine = $_POST['machine'];
+    $idReservation = $_POST['id_reservation'];
+
+    $duree_presta = $_POST['duree_presta'];
+    $presta = $_POST['presta'];
+
+
+    if($nom == NULL && $prenom == NULL && $email == NULL && $phone == NULL && $address == NULL && $libelle == NULL) {
+        $currentPassword = $_POST['currentPassword'];
+        $newPassword = $_POST['newPassword'];
+        $confirmNewPassword = $_POST['confirmNewPassword'];
+        
+        if ($newPassword == $confirmNewPassword) {
+            if ($Users->checkPassword($idUser, $currentPassword)) {
+                $Users->updatePassword($idUser, $newPassword);
+                Tools::setFlash('success', 'Modification réussie');
+            } else {
+                Tools::setFlash('danger', 'Le mot de passe actuel est incorrect.');
+            }
+        } else {
+            Tools::setFlash('danger', 'Les nouveaux mots de passe ne correspondent pas.');
+        }
+    }
+    
+    if($nom == NULL && $prenom == NULL && $email == NULL && $phone == NULL && $address == NULL && $currentPassword == NULL && $newPassword == NULL && $confirmNewPassword == NULL){
+        $Users->addMachineLigneFacture($libelle, $duree, $idMachine);
+        if($idConsommable != NULL) {
+            $Users->addConsommableLigneFacture($libelle, $quantite, $idConsommable);
+        }
+
+        if(isset($_POST['duree_presta']) && isset($_POST['presta']))
+        {
+            $prix_presta = $Machines->getBy(['id' => $idMachine])[0]->prestation;
+            $Users->addPrestationLigneFacture($duree_presta, $prix_presta);
+        }
+
+        $Reservations->delete($idReservation);
+    }
+
+    return $response->withHeader('Location', '/utilisateur')->withStatus(302);
+});

@@ -15,12 +15,12 @@ define('URL', 'https://' . $_SERVER['HTTP_HOST']);
 define('URI', '/');
 define('LANG', 'FR');//$_SESSION['lang'] = "EN"; pour la traduction en anglais
 @session_start();
-(!isset($_SESSION['lang']))? $_SESSION['lang'] = LANG : "";
-define('_PREFIX_LANG_', (@$_SESSION['lang'] == 'EN') ? "_en" :  "");
+(!isset($_SESSION['lang'])) ? $_SESSION['lang'] = LANG : "";
+define('_PREFIX_LANG_', (@$_SESSION['lang'] == 'EN') ? "_en" : "");
 
 /***DIR DEFINE***/
-define('ADMIN_URL',URI. 'gdadmin/');
-define('THEME_DIR', URI.'themes/');
+define('ADMIN_URL', URI . 'gdadmin/');
+define('THEME_DIR', URI . 'themes/');
 define('ASSETS_DIR', THEME_DIR . 'assets/');
 define('CSS_DIR', ASSETS_DIR . 'css/');
 define('JS_DIR', ASSETS_DIR . 'js/');
@@ -37,8 +37,8 @@ define("ADMIN", isset($_SESSION['auth']) && $_SESSION['auth'] == 'true' && ($_SE
 define('USER_FILE', "/");//Redirection user après connexion & inscription
 require 'acces.php';
 if (!defined('DB_NAME')) {
-    if($_SERVER['PHP_SELF'] != "/install.php"){
-        header('location: '.URL.'/install.php');
+    if ($_SERVER['PHP_SELF'] != "/install.php") {
+        header('location: ' . URL . '/install.php');
         die();
     }
 } elseif (file_exists("install.php")) {
@@ -64,5 +64,11 @@ require __DIR__ . '/classes/Tarifs.php';
 require __DIR__ . '/classes/Valeur.php';
 require __DIR__ . '/classes/Users.php';
 require __DIR__ . '/classes/Articles.php';
+require __DIR__ . '/classes/PriseRendezVous.php';
+require __DIR__ . '/classes/Reservation.php';
+require __DIR__ . '/classes/Factures.php';
+require __DIR__ . '/classes/CreationFacture.php';
+require __DIR__ . '/classes/LignesFactures.php';
+require __DIR__ . '/classes/Formation.php';
 
 //require __DIR__ . '/classes/MenuAdmin.php';

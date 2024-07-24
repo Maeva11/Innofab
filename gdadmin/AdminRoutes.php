@@ -26,6 +26,9 @@ $app->get('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response
     return $app->tpl->render($response, "page.php", $args);
 });
 $app->post('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
+    if (@$args['crud'] == "creationfacture") {
+        $Facture = new Factures();
+    }
     $CRUD = $args['crud'];
     (new $CRUD())->set($_POST, @$_FILES);
     Tools::redirect(ADMIN_URL . "crud/" . $CRUD);

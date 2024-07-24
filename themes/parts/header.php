@@ -1,4 +1,6 @@
 <?php
+session_start(); // Assurez-vous que la session est démarrée
+
 function isCurrentPage($page)
 {
     $url = $_SERVER['REQUEST_URI'];
@@ -16,6 +18,9 @@ $pages = [
     '/tarifs' => 'Tarifs',
     '/contact' => 'Contact',
 ];
+
+// Déterminez l'URL de connexion en fonction de la session utilisateur
+$connexionUrl = isset($_SESSION['user']) ? '/utilisateur' : '/connexion';
 ?>
 
 <div class="navbar-main">
@@ -31,7 +36,10 @@ $pages = [
             </li>
         <?php } ?>
         <div class="div-connexion-header">
-            <div class="connexion-header"><a href="/connexion" class="<?= (isCurrentPage('/connexion')) ? "active" : ""; ?>">Connexion</a>
+            <div class="connexion-header">
+                <a href="<?= $connexionUrl ?>" class="<?= (isCurrentPage($connexionUrl)) ? "active" : ""; ?>">
+                    <?= isset($_SESSION['user']) ? 'Mon compte' : 'Connexion' ?>
+                </a>
             </div>
         </div>
     </ul>

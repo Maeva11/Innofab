@@ -50,10 +50,12 @@
                     <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>pageBuilder"><i
                                     class="fas fa-pager"></i>
                             <p>Mes pages</p></a></li>
-                <?php } else { ?>
-                    <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>console/configuration"><i
+                    <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>console/adminBuilder"><i
                                     class="fas fa-puzzle-piece"></i>
-                            <p>Configuration</p></a></li>
+                            <p>Modules</p></a></li>
+                    <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>console/administrateur"><i
+                                    class="fas fa-tools"></i>
+                            <p>Administrateur</p></a></li>
                 <?php } ?>
                 <div class="post-divider"></div>
                 <?php
@@ -63,6 +65,7 @@
                                 class="<?= @$el->icone ?>"></i>
                         <p><?= @$el->nom ?></p></a></li>
                 <?php } ?>
+
                 <li class="nav-item "><a class="nav-link" href="<?= ADMIN_URL ?>terms"><i class="fas fa-pen"></i>
                         <p>Mentions légales</p></a></li>
             </ul>
@@ -89,7 +92,6 @@
             if (!empty($data['block'])) {
                 foreach ($data['block'] as $block) {
                     include('parts/' . $block . '.php');
-                    include ('parts/stats.php');
                 }
             }
             ?>

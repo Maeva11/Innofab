@@ -28,6 +28,4 @@ class users extends Controller
             return false;
         }
     }
-    
-    
 }

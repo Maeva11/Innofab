@@ -229,8 +229,3 @@ span.deleteBlock {
     border: 2px dotted green;
     padding: 10px;
 }
-
-.admin .editable-img {
-    cursor:pointer;
-    border: 2px dotted green;
-}

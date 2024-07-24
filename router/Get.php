@@ -46,6 +46,131 @@ $app->get('/resetPassword/{key}', function (Request $request, Response $response
     return $app->tpl->render($response, "resetPassword.php", $args = ["key" => $args['key']]);
 });
 
+// PDF facture
+$app->get('/generatepdf', function (Request $request, Response $response, $args) use ($app) {
+    define('EURO', chr(128));
+    define('EAIGU', chr(233));
+    define('EGRAVE', chr(232));
+    define('AAIGU', chr(224));
+
+    $total_a_payer = 0;    
+
+    $Factures = new Factures();
+    $LignesFactures = new LignesFactures();
+    $Users = new Users();
+    
+    $idfacture = $_GET['idfacture'];
+
+    $facture = $Factures->getBy(['id' => $idfacture])[0];
+
+    $date_facture = new DateTimeImmutable($facture->date_facture);
+
+    // Create a timestamp for the given date
+    $date = strtotime($facture->date_facture);
+
+    // Format the date
+    $formattedDate = strftime('%A %e %B %Y', $date);
+
+    $datefacturedisplay = ucfirst($formattedDate);
+
+    if(isset($facture))
+    {
+        $lignesFactures = $LignesFactures->getBy(['id_facture' => $idfacture]);
+        $user =$Users->getBy(['id' => $facture->id_user])[0];
+    }
+
+    $pdf = new FPDF('P', 'mm', 'A4');
+    
+    $pdf->AddFont('LiberationSans','','LiberationSans-Regular.php');
+    $pdf->AddFont('LiberationSans','B','LiberationSans-Bold.php');
+
+    $pdf->AddPage();
+
+
+    $pdf->SetFont('LiberationSans', 'B', 20);
+    $pdf->Cell(180, 10, 'FACTURE No : '.$date_facture->format('Y').'-'.$facture->id, 0, 1, 'C');
+    $pdf->SetFont('LiberationSans', 'B', 15);
+    $pdf->Cell(180, 8, $datefacturedisplay, 0, 1, 'C');
+
+    $pdf->Cell(180, 10, '', 0, 1);
+
+    
+    $pdf->SetFont('LiberationSans', 'B', 15);
+    $pdf->Cell(71, 8, 'INNOFAB', 0, 0);
+    $pdf->Cell(59, 8, '', 0, 0);
+    $pdf->Cell(59, 8, 'Factur'.EAIGU.' '.AAIGU, 0, 1);
+
+
+    $pdf->SetFont('LiberationSans', '', 10);
+    $pdf->Cell(130, 5, 'Espace Ressources', 0, 0);
+    $pdf->Cell(25, 5, 'ID Adh'.EAIGU.'rent :', 0, 0);
+    $pdf->Cell(34, 5, $user->id, 0, 1);
+
+    $pdf->Cell(130, 5, 'Le Causse Espace d\'Entreprises', 0, 0);
+    $pdf->Cell(25, 5, 'Nom :', 0, 0);
+    $pdf->Cell(34, 5, $user->nom, 0, 1);
+
+    $pdf->Cell(130, 5, '81100 Castres', 0, 0);
+    $pdf->Cell(25, 5, 'Pr'.EAIGU.'nom :', 0, 0);
+    $pdf->Cell(34, 5, $user->prenom, 0, 1);
+    
+    $pdf->Cell(130, 5, 'www.innofab.fr', 0, 0);
+    $pdf->Cell(25, 5, 'Adresse mail : ', 0, 0);
+    $pdf->Cell(34, 5, $user->email, 0, 1);
+
+    $pdf->Cell(130, 5, 'fabmanager.innofab@gmail.com', 0, 0);
+    $pdf->Cell(25, 5, 'Adresse : ', 0, 0);
+    $pdf->MultiCell(34, 5, $user->address, 0, 1);
+
+    $pdf->SetFont('LiberationSans', 'B', 10);
+    $pdf->Cell(189, 10, '', 0, 1);
+    
+    $pdf->Cell(50, 10, '', 0, 1);
+    
+    $pdf->SetFont('LiberationSans', 'B', 10);
+    $pdf->Cell(85, 6, 'Description', 1, 0, 'C');
+    $pdf->Cell(33, 6, 'Qte', 1, 0, 'C');
+    $pdf->Cell(35, 6, 'Prix', 1, 0, 'C');
+    $pdf->Cell(35, 6, 'Total', 1, 1, 'C');
+    
+
+    $pdf->SetFont('LiberationSans', 'B', 10);
+    foreach ($lignesFactures as $ligneFacture) {
+        $pdf->Cell(85, 6, $ligneFacture->libelle, 1, 0);
+        $pdf->Cell(33, 6, $ligneFacture->quantite_prix, 1, 0, 'R');
+        $pdf->Cell(35, 6, $ligneFacture->prix_ligne.' '.EURO, 1, 0, 'R');
+        $pdf->Cell(35, 6, $ligneFacture->quantite_prix*$ligneFacture->prix_ligne.' '.EURO, 1, 1, 'R');
+        $total_a_payer = $total_a_payer + ($ligneFacture->quantite_prix*$ligneFacture->prix_ligne);
+    }
+    
+    $pdf->Cell(123, 6, '', 0, 0);
+    $pdf->Cell(30, 6, 'Total '.AAIGU.' payer', 0, 0);
+    $pdf->Cell(35, 6, $total_a_payer.' '.EURO, 1, 1, 'R');
+    
+    $pdf->Cell(188, 20, '', 0, 1);
+    
+    $pdf->SetFont('LiberationSans', '', 8);
+    $pdf->Cell(188, 6, 'Association loi 1901 - Non assujetti '.AAIGU.' la TVA', 0, 1, 'C');
+    $pdf->Cell(188, 6, 'No SIRET 813 526 951 00013', 0, 1, 'C');
+    $pdf->Cell(188, 6, 'APE 9499 Z', 0, 1, 'C');
+    $pdf->Cell(188, 6, 'Le r'.EAIGU.'glement est '.AAIGU.' effectuer par ch'.EGRAVE.'que '.AAIGU.' l\'ordre de INNOFAB', 0, 1, 'C');
+    $pdf->Cell(188, 6, 'Ou par virement, CIC Sud Ouest IBAN : FR76 1005 7190 4900 0200 7200 118 BIC : CMCIFRPP', 0, 1, 'C');
+
+    // Capture du contenu PDF
+    $pdfContent = $pdf->Output('S');
+
+    // Répondre avec le PDF
+    $response->getBody()->write($pdfContent);
+    return $response->withHeader('Content-Type', 'application/pdf')
+                    ->withHeader('Content-Disposition', 'inline; filename="facture.pdf"');
+});
+
+$app->get('/deconnexion', function (Request $request, Response $response, $args) use ($app) {
+    @session_start();
+    session_destroy();
+    Tools::redirect('/');
+});
+
 $app->get('/[{url}[/{id}[/{titre}]]]', function (Request $request, Response $response, $args) use ($app) {
     $id = $args['id'] ?? null;
     $blockbuilder = new Blockbuilder();
@@ -140,5 +265,3 @@ $app->get('/sitemap.xml', function() use($app){
 	echo $xml;
 	die;
 });*/
-
-

@@ -1,18 +1,28 @@
 .img-gauche {
-    width: 50px;
-    height: 80px;
-    left: 0px;
-    bottom: 0px;
-    position: absolute
-}
-
-.img-droite {
-    width: 50px;
-    height: 75px;
-    right: 0px;
-    top: 0px;
+    width: 100px; /* Augmentation de la largeur */
+    height: 160px; /* Augmentation de la hauteur */
+    left: 0;
+    bottom: 0;
     position: absolute;
 }
+
+#page-1 body {
+    background: white !important;
+}
+
+.intro-section, .valeur {
+    background-color: white;
+}
+
+
+.img-droite {
+    width: 100px; /* Augmentation de la largeur */
+    height: 150px; /* Augmentation de la hauteur */
+    right: 0;
+    top: -5%;
+    position: absolute;
+}
+
 
 .logo-img {
     width: 75px;
@@ -35,7 +45,7 @@
     height: 70%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .navbar-main li {
@@ -80,13 +90,15 @@
 }
 
 .div-connexion-header {
-    width: 130px;
+    width: 165px;
     height: 100px;
     position: relative;
+    z-index: 999;
+    margin-top: -15px;
 }
 
 .connexion-header {
-    width: 165px;
+    width: 100%;
     height: 85px;
     background: #EA581D;
     border-top-left-radius: 20px;
@@ -94,10 +106,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.connexion-header li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lien-logo {
     width: 100%;
+}
+
+.extend-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.d {
+    margin-right: 5px;
 }
 
 .valeur {
@@ -113,7 +144,7 @@
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 .list li {
@@ -173,9 +204,10 @@
 }
 
 .how-works {
-    height: 1000px;
+    height: auto;
     background-color: var(--custom-btn-bg-hover-color);
     margin-top: 50px;
+    padding-bottom: 60px;
 }
 
 .how-works h1 {
@@ -207,4 +239,335 @@
     margin-top: 28px;
     height: 158px;
     object-fit: contain;
+}
+
+.intro-section {
+    padding-top: 50px;
+}
+
+#page-2 body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#page-2 .container {
+    display: flex;
+    width: 80%;
+    padding: 0;
+    max-width: 960px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+#page-2 .telephone, .email, .adresse, .horaires, .info-section > h2 {
+    color: white;
+}
+
+#page-2 #map {
+    width: 100vw;
+    height: 500px;
+}
+
+#page-2 .info-section {
+    background-color: #1d294a;
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px 0 0 10px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#page-2 .info-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#page-2 .info-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#page-2 .info-section .address {
+    font-style: normal;
+    margin-top: 20px;
+}
+
+#page-2 .info-section .phone {
+    margin-top: 10px;
+}
+
+.hours h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.hours p {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.hours table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.hours table td {
+    border: 1px solid #e34f26;
+    padding: 5px;
+    text-align: center;
+}
+
+.info-section p i {
+    margin-right: 10px;
+}
+
+#page-2 .form-section {
+    padding: 40px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#page-2 .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#page-2 .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+#page-2 .form-group:last-child {
+    margin-right: 0;
+}
+
+#page-2 .form-group label {
+    font-size: 13px;
+}
+
+#page-2 .form-group input {
+    background: transparent;
+    width: 100%;
+    border: none;
+    padding-top: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+}
+
+#page-2 textarea {
+    min-height: 100px;
+    resize: none;
+    margin-top: 10px;
+    font-size: 13px;
+    background: transparent;
+    border-color: #ccc;
+    margin-bottom: 10px;
+}
+
+#page-2 button.btn-send {
+    align-self: flex-end;
+    padding: 10px 20px;
+    background-color: #1d294a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#page-2 button.btn-send i {
+    margin-right: 10px;
+}
+
+#page-2 .title-contact {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #EA581D;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.how-works .card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: transparent;
+}
+
+.how-works .card-img {
+    width: 100%;
+    height: 500px;
+    display: block;
+    object-fit: cover;
+}
+
+.how-works .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0 0 0 / 36%);
+}
+
+.how-works .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+    background: #ffffffa6;
+    padding: 30px;
+}
+
+.how-works .content h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.how-works .content p {
+    font-size: 16px;
+}
+
+.how-works .content a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.how-works .content a:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.how-works hr.separator {
+    height: 2px;
+    opacity: 1;
+    color: white;
+    margin-top: 20px;
+}
+
+.arrow-header {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+    margin-left: 0.3em;
+}
+
+.arrow-header.up {
+    transform: rotate(180deg);
+}
+
+.description-content-header {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #EA581D;
+    border-radius: 0 0 15px 15px;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.description-content-header.open {
+    max-height: 150px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.description-content-header::-webkit-scrollbar {
+    width: 6px;
+}
+
+.description-content-header::-webkit-scrollbar-track {
+    background: #EA581D;
+    border-radius: 15px;
+}
+
+.description-content-header::-webkit-scrollbar-thumb {
+    background: #EA581D;
+    border-radius: 15px;
+}
+
+.utilisateurLien {
+    margin-bottom: 0.3em;
+}
+
+.video-presentation .title {
+    background-color: grey;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.video-presentation {
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+.video-presentation .title h2 {
+    font-size: 30px;
+    color: white;
+}
+
+/* Styles spécifiques pour la section de consentement de confidentialité */
+/* Styles spécifiques pour la section de consentement de confidentialité */
+.privacy-consent {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    flex-direction: row !important;
+    gap: 10px;
+}
+
+.privacy-consent .form-checkbox {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 20px !important;
+}
+
+.privacy-consent .form-text {
+    display: inline-block;
+    color: #333;
+}
+
+.privacy-consent .form-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.privacy-consent .form-link:hover {
+    text-decoration: underline;
+}
+
+.privacy-consent label {
+    font-size: 12px !important;
 }

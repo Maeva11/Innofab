@@ -6,7 +6,7 @@ class Mail
     private $body;
     private $to;
     public function __construct(){
-        $this->to = 'melvin@gtl-digital.fr';//Tools::getValue("E-mail");
+        $this->to = 'maeva@gtl-digital.fr'; //Tools::getValue("E-mail");
     }
     public function checkEmailFormat($email){
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
