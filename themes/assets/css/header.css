@@ -203,19 +203,6 @@
     opacity: 0;
 }
 
-.how-works {
-    height: auto;
-    background-color: var(--custom-btn-bg-hover-color);
-    margin-top: 50px;
-    padding-bottom: 60px;
-}
-
-.how-works h1 {
-    color: white;
-    margin-top: 125px;
-    text-align: center;
-}
-
 .card-works {
     width: 65%;
     margin: auto;

@@ -26,12 +26,118 @@ $app->get('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response
     return $app->tpl->render($response, "page.php", $args);
 });
 $app->post('/crud/{crud}[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
-    if (@$args['crud'] == "creationfacture") {
-        $Facture = new Factures();
-    }
     $CRUD = $args['crud'];
-    (new $CRUD())->set($_POST, @$_FILES);
-    Tools::redirect(ADMIN_URL . "crud/" . $CRUD);
+    if (@$args['crud'] == "creationfacture") {
+        $Factures = new Factures();
+        $LignesFactures = new LignesFactures();
+
+
+        if (isset($_POST['ids'])) {
+            $lignesFactures = $LignesFactures->getLigneFactureByArrayId($_POST['ids']);
+
+            if (!empty($lignesFactures)) {
+                $date_facture = date("Y-m-d H:i:s");
+                $id_user = $lignesFactures[0]->id_user;
+                $prix_total = 0;
+
+                foreach ($lignesFactures as $ligneFacture) {
+                    $prix_total = $prix_total + ($ligneFacture->quantite_prix * $ligneFacture->prix_ligne);
+                }
+
+                $id_facture = $Factures->insertFacture($date_facture, $prix_total, $id_user);
+
+                if (isset($id_facture)) {
+                    foreach ($lignesFactures as $ligneFacture) {
+                        $LignesFactures->updateIdFactureLigneFacture($ligneFacture->id, $id_facture);
+                    }
+                }
+            }
+
+            Tools::redirect(ADMIN_URL . "crud/factures");
+        } else {
+            echo "Aucune case à cocher n'a été sélectionnée.";
+            Tools::redirect(ADMIN_URL . "crud/" . $CRUD);
+        }
+    } else if ($CRUD == "reservation" && isset($_POST['statut']) && isset($_POST['id'])) {
+        // Mise à jour du statut
+        $id = $_POST['id'];
+        $statut = $_POST['statut'];
+        $reservation = new Reservation();
+        if ($reservation->updateStatus($id, $statut)) {
+            Tools::redirect(ADMIN_URL . 'crud/reservation');
+        } else {
+            echo "Erreur lors de la mise à jour du statut.";
+        }
+    } else if ($CRUD == "reservation") {
+        // Création ou mise à jour d'une réservation
+        $reservation = new Reservation();
+        error_log("Saving reservation");  // Debugging
+        error_log(json_encode($_POST));  // Debugging
+
+        $id_machine = $_POST['id_machine'];
+        $id_user = $_POST['id_user'];
+        $date_debut = $_POST['date_debut'];
+        $date_fin = $_POST['date_fin'];
+        $statut = $_POST['statut'];
+        $id = isset($_POST['id']) ? $_POST['id'] : null;
+
+        if ($reservation->save($id_machine, $id_user, $date_debut, $date_fin, $statut, $id)) {
+            Tools::redirect(ADMIN_URL . 'crud/reservation');
+        } else {
+            echo "Erreur lors de la sauvegarde de la réservation.";
+            error_log("Erreur lors de la sauvegarde de la réservation");  // Debugging
+        }
+    } else if ($CRUD == "priseRendezVous" && isset($_POST['statut']) && isset($_POST['id'])) {
+
+        $rendezVous = new PriseRendezVous();
+
+        $id = $_POST['id'];
+        $statut = $_POST['statut'];
+        $email = $_POST['email'];
+
+        if ($statut === "1" || $statut === "0") {
+            
+            if ($rendezVous->updateAcceptStatus($id, $statut)) {
+
+                $Mailer = new Mail();
+                $Mailer->setTo($email);
+                $subject = $statut === "1" ? "Demande de rendez vous accepté" : "Demande de rendez vous refusé";
+                $body = $statut === "1" ? "<li>Votre demande de rendez vous a été acceptée</li>" : "<li>Votre demande de rendez vous a été refusée</li>";
+
+                $Mailer->setSubject($subject);
+                $Mailer->setBody($body);
+
+                if ($Mailer->send()['success']) {
+                    Tools::setFlash("success", 'Merci ! Nous vous répondrons dès que possible !');
+                } else {
+                    Tools::setFlash("error", 'Désolé, votre message n\'a pas été envoyé !');
+                }
+
+                Tools::redirect(ADMIN_URL . 'crud/priseRendezvous');
+            } else {
+                echo "Erreur lors de la mise à jour du statut.";
+            }
+        } else {
+            Tools::redirect(ADMIN_URL . 'crud/priseRendezvous');
+        }
+
+    // } else if ($CRUD == "machines") {
+    //     $id = $_POST['id'];
+    //     $tags = isset($_POST['tags']) ? (is_array($_POST['tags']) ? $_POST['tags'] : explode(',', $_POST['tags'])) : [];
+
+
+    //     $machineTag = new MachineTag();
+    //     if ($machineTag->insertTagsOfMachine($id, $tags)) {
+    //         Tools::redirect(ADMIN_URL . 'crud/machines');
+    //     } else {
+    //         echo "Erreur lors de l'insertion.";
+    //         error_log("Erreur lors de la sauvegarde de la réservation");  // Debugging
+    //     }
+    // } else if ($CRUD == "generatepdf") {
+    } else {
+        (new $CRUD())->set($_POST, @$_FILES);
+        Tools::redirect(ADMIN_URL . "crud/" . $CRUD);
+    }
 });
 $app->get('/blockBuilder[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
     $builder = new Blockbuilder();
@@ -176,4 +282,9 @@ $app->post('/favicon', function (Request $request, Response $response, $args) us
 $app->post('/ajax/generateBlockBuilder', function (Request $request, Response $response, $args) {
     echo (new Pagebuilder())->generateBlocks(@$_POST['id_block']);
     return $response;
+});
+
+$app->get('/generatepdf[/{action}[/{id}]]', function (Request $request, Response $response, $args) use ($app) {
+    (new Generatepdf())->set($_POST);
+    Tools::redirect(ADMIN_URL . 'generatepdf');
 });

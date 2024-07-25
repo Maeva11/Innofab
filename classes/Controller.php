@@ -4,7 +4,7 @@ class Controller
 {
 
     protected $model;
-    protected $allowFileNames = ["illustration", "image", "image_1", "image_2", "drapeau"];
+    protected $allowFileNames = ["illustration", "image", "image_1", "image_2", "drapeau", "logo"];
 
     function __construct()
     {

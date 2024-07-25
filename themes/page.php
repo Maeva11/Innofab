@@ -39,6 +39,9 @@
     <link href="/themes/assets/css/footer.css" rel="stylesheet">
     <link href="/themes/assets/css/header.css" rel="stylesheet">
     <link href="/themes/assets/css/rendezVous.css" rel="stylesheet">
+    <link href="/themes/assets/css/utilisateur.css" rel="stylesheet">
+    <link href="/themes/assets/css/camion.css" rel="stylesheet">
+    <link href="/themes/assets/css/accueil.css" rel="stylesheet">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=CODE-GTAG"></script>
     <script>

@@ -45,6 +45,8 @@ if (!defined('DB_NAME')) {
     unlink("install.php");
 }
 
+require 'vendor/fpdf/fpdf.php';
+
 /***Require Classes***/
 require 'classes/Controller.php';
 require 'classes/GWModel.php';
@@ -70,5 +72,12 @@ require __DIR__ . '/classes/Factures.php';
 require __DIR__ . '/classes/CreationFacture.php';
 require __DIR__ . '/classes/LignesFactures.php';
 require __DIR__ . '/classes/Formation.php';
+require __DIR__ . '/classes/StatutResa.php';
+require __DIR__ . '/classes/tag.php';
+require __DIR__ . '/classes/MachineTag.php';
+require __DIR__ . '/classes/Generatepdf.php';
+require __DIR__ . '/classes/Consommables.php';
+require __DIR__ . '/classes/Membres.php';
+require __DIR__ . '/classes/Rassurance.php';
 
 //require __DIR__ . '/classes/MenuAdmin.php';
